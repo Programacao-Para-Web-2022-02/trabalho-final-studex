@@ -5,7 +5,7 @@ Uma aplicação no estilo de Pokedex para apresentar um rápido currículo dos a
 ## Leonardo Areias
 ## Pedro Henrique Moreira
 
-Projeto feito em React, usando Vue.JS.
+Projeto feito em Angular e Python.
 <div style="display: inline_block"><br>
   <img align="center" alt="Zoser-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="Zoser-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
