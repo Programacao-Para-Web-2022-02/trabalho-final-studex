@@ -2,21 +2,20 @@ body{
     margin: 0;
     padding: 0;
 }
+/*INICIO NAVBAR*/
 .navbar{
     display: flex;
     width: 100%;
     height: 100px;
-    background: rgba(253, 33, 33, 0.718);
-    box-shadow: 0 5px 40px rgb(255, 212, 58);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: black;
     align-items: center;
+    background-attachment: fixed;
 }
 .itens-nav{
     margin-left: 12%;
 }
 .nav-texto{
-    color: white;
+    color: rgb(228, 228, 4);
     font-family: 'Roboto', sans-serif;
     font-size: 23px;
 }
@@ -26,3 +25,39 @@ body{
 .logo-foto{
     width: 150px;   
 }
+/*FIM NAVBAR*/
+/*INICIO HOME*/
+.header-1{
+    display: block;
+    align-items: center;
+}
+.imagem-fundo{
+    display: block;
+    background-image: url('/static/assets/images/fundo_home.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+}
+.botoes-1{
+    display: block;
+    text-align: center;
+    padding-top: 15%;   
+}
+.m-botao{
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 1%;
+    align-items: center;
+    height: 100px;
+    width: 300px;
+    color: #396BBA;
+    background-color: #FFE031;
+    border-radius: 30px;
+}
+/*FIM HOME*/
+
+/*INICIO ADICIONE O SEU*/
+
+
+
+/*FIM ADICIONE O SEU*/
