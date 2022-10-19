@@ -35,9 +35,11 @@ body{
 .imagem-fundo{
     display: block;
     background-image: url('/static/assets/images/fundo_home.jpg');
+    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     height: 100%;
+    width: 100%;
 }
 .botoes-1{
     display: block;
@@ -60,9 +62,12 @@ body{
 /*INICIO ADICIONE O SEU - Form*/
 .imagem-fundo-form{
     background-image: url('/static/assets/images/fundo_squirtle.jpg');
+    background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     height: 100%;
+    width: 100%;
+
 }
 .main-form{
     background-color: #041b40;   
