@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends  "base.html" %}
+{% block title %} Login {% endblock %}
 
-</body>
-</html>
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+<div class="imagem-fundo-form">
+        <div class="main-form">
+            <form class="formulario" action="#" method="post">
+                <img src="static/assets/images/Formulario.png">
+                <div class="fields">
+                    <label for="nm">Qual o seu nome?</label><br>
+                    <input type="text" class="caixa-form" name="nm" id="nm" /><br>
+                    <button class="botao-form" type="submit">
+                        <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
