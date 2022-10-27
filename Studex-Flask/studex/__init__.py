@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+app.app_context().push()
 app.secret_key = "studex"
 app.config['SECRET_KEY'] = 'studexmaiordetodos#tomatomatoma##kjkjkjkjkj'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///studex.db'

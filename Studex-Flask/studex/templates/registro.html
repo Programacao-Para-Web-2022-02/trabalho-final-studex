@@ -13,15 +13,14 @@
     {% endwith %}
 
 <div class="imagem-fundo-form">
-        <div class="main-form">
-            <form class="formulario" action="/registro" method="POST">
-                <img src="static/assets/images/Formulario.png">
-                <div class="fields">
-                    {{ form.hidden_tag() }}
+        <div class="form-registro">
+            <form action="/registro" method="POST">
+                <img class="imagem-registro" src="/studex/static/assets/images/resgistre-se.png">
+                <div class="fields-login">
                     {{ wtf.form_field(form.username) }}
                     {{ wtf.form_field(form.email) }}
                     {{ wtf.form_field(form.password) }}
-
+                    {{ form.hidden_tag() }}
                     <button class="botao-form" type="submit">
                         <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
                     </button>

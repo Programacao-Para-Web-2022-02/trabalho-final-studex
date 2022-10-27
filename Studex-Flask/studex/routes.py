@@ -16,7 +16,7 @@ def registro():
         new_user = users(usename=form.username.data, email=form.email.data, senha=form.password.data)
         db.session.add(new_user)
         db.session.commit()
-        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {users.query.all()}<br> !</h1> '
+        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {users.usename, users.email, users.senha }<br> !</h1> '
 
         #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
 
