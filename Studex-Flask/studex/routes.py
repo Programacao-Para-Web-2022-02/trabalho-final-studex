@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request
-from studex.forms import LoginForm, RegisterForm
+from studex.forms import Form, LoginForm, RegisterForm
 from studex import app, db
 from studex.models import users
 
@@ -43,7 +43,7 @@ def logout():
 @app.route("/form", methods=["POST", "GET"])
 def form():
 
-    form = RegisterForm()
+    form = Form()
 
     if form.validate_on_submit():
         new_user = users(usuario=form.username.data, email=form.email.data, 

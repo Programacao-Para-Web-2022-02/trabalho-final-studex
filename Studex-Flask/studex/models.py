@@ -10,11 +10,11 @@ class users(db.Model):
     tempo_prog = db.Column(db.String(15), nullable=False)
     ling_pref = db.Column(db.String(80), nullable=False)
     sis_op = db.Column(db.String(80), nullable=False)
-    nivel_py = db.Column(db.Integer, nullable=False)
-    nivel_js = db.Column(db.Integer, nullable=False)
-    nivel_c = db.Column(db.Integer, nullable=False)
-    nivel_htmlcss = db.Column(db.Integer, nullable=False)
-    nivel_java = db.Column(db.Integer, nullable=False)
+    nivel_py = db.Column(db.String(), nullable=False)
+    nivel_js = db.Column(db.String(), nullable=False)
+    nivel_c = db.Column(db.String(), nullable=False)
+    nivel_htmlcss = db.Column(db.String(), nullable=False)
+    nivel_java = db.Column(db.String(), nullable=False)
     resumo = db.Column(db.String(500), nullable=False)
 
 
