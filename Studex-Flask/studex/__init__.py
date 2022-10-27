@@ -14,8 +14,6 @@ app.permanent_session_lifetime = timedelta(minutes=5)
 Bootstrap(app)
 db = SQLAlchemy(app)
 
-
-
 from studex import routes
 
 

@@ -16,9 +16,8 @@ def registro():
         new_user = users(usename=form.username.data, email=form.email.data, senha=form.password.data)
         db.session.add(new_user)
         db.session.commit()
-        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {users.usename, users.email, users.senha }<br> !</h1> '
 
-        #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
+        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {users.usename, users.email}<br> !</h1> '
 
     return render_template("registro.html", form=form)
 
@@ -43,19 +42,20 @@ def logout():
 
 @app.route("/form", methods=["POST", "GET"])
 def form():
-    if request.method == "POST":
-        user = request.form["nm"]
-        ra = request.form["ra"]
-        semestre = request.form["se"]
-        tempo = request.form["tm"]
-        linguagem = request.form["lg"]
-        so = request.form["so"]
-        python = request.form["py"]
-        javascript = request.form["js"]
-        c = request.form["c"]
-        html = request.form["html"]
-        java = request.form["jv"]
-        resumo = request.form["rs"]
-        return redirect(url_for("pokemon", usr=[user, ra, semestre, tempo, linguagem, so, python, javascript, c, html, java, resumo]))
-    else:
-        return render_template("form.html", content="forms")
+
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        new_user = users(usuario=form.username.data, email=form.email.data, 
+                        senha=form.password.data, nome=form.nome.data, ra=form.ra.data, 
+                        tempo_prog=form.tempo_prog.data, ling_pref=form.ling_pref.data, 
+                        sis_op=form.sis_op.data, nivel_py=form.nivel_py.data, 
+                        nivel_c=form.nivel_c.data, nivel_htmlcss=form.nivel_htmlcss.data,
+                        nivel_java=form.nivel_java.data, resumo=form.resumo.data)
+        db.session.add(new_user)
+        db.session.commit()
+        
+        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {users.query.all()}<br> !</h1> '
+
+    return render_template("form.html", form=form)
+    
