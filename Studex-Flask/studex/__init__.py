@@ -10,7 +10,7 @@ app.secret_key = "studex"
 app.config['SECRET_KEY'] = 'studexmaiordetodos#tomatomatoma##kjkjkjkjkj'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///studex.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.permanent_session_lifetime = timedelta(minutes=5)
+#app.permanent_session_lifetime = timedelta(minutes=5)
 Bootstrap(app)
 db = SQLAlchemy(app)
 

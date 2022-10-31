@@ -1,9 +1,7 @@
 {% extends  "base.html" %}
-{% block title %} Form {% endblock %}
+{% block title %} Formulario {% endblock %}
 {% import "bootstrap/wtf.html" as wtf %}
-
 {% block content %}
-
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for msg in messages %}
@@ -15,7 +13,7 @@
 <div class="imagem-fundo-form">
         <div class="main-form">
             <form class="formulario" action="#" method="post">
-                <img src="static/assets/images/Formulario.png">
+                <img class="img-formulario" src="static/assets/images/Formulario.png">
                 <div class="fields">
                     {{ wtf.form_field(form.username) }}
                     {{ wtf.form_field(form.email) }}
@@ -31,7 +29,6 @@
                     {{ wtf.form_field(form.nivel_java) }}
                     {{ wtf.form_field(form.resumo) }}
                     {{ form.hidden_tag() }}
-
                        <button class="botao-form" type="submit">
                             <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
                         </button>
@@ -40,6 +37,5 @@
             </form>
         </div>
     </div>
-
 {% endblock %}
 

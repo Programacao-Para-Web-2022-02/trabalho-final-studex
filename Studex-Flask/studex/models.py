@@ -17,7 +17,6 @@ class users(db.Model):
     nivel_java = db.Column(db.String(), nullable=False)
     resumo = db.Column(db.String(500), nullable=False)
 
-
 class forms(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
     cod_email = db.Column(db.Integer, primary_key=True)

@@ -60,31 +60,27 @@ body{
 
 /*INICIO ADICIONE O SEU - Form*/
 .imagem-fundo-form{
-    background-image: url('/static/assets/images/fundo_squirtle.jpg');
+    /*background-image: url('/static/assets/images/fundo_squirtle.jpg');*/
+    text-align: center;
     background-repeat: no-repeat;
-    position: relative;
-    height: 100%;
-    background-position: center;
-    background-attachment: fixed;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    padding-left: 29.5%;
+}
+.img-formulario{
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 .main-form{
-    display: flex;
+    display: block;
     background-color: #041b40;
-    width: 700px;
-    height: 1200px;
+    width: 800px;
     border-radius: 50px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-left: 35%;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 .fields{
     display: block;
     font-size: 30px;
-    padding-top: 3%;
     color: #FFE031;
 }
 .caixa-form{

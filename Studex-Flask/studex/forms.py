@@ -11,23 +11,6 @@ class LoginForm(FlaskForm):
     remember = BooleanField('lembre de mim')
 
 
-class RegisterForm(FlaskForm):
-    email = StringField('E-mail: ', validators=[InputRequired(), Email(message='Email Inválido'), Length(max=50)])
-    username = StringField('Usuário: ', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('Senha: ', validators=[InputRequired(), Length(min=6, max=80)])
-
-    def validate_username(self, username):
-            usuario = users.query.filter_by(usename=username.data).first()
-            if usuario:
-                raise ValidationError("Esse usuario já foi cadastrado. Tente usar outro nick para continuar")
-
-
-    def validate_email(self, email):  
-        usuario = users.query.filter_by(email=email.data).first()
-        if usuario:
-            raise ValidationError("Esse E-mail já foi cadastrado. Tente usar outro e-mail para continuar")
-
-
 class Form(FlaskForm):
     email = StringField('E-mail: ', validators=[InputRequired(), Email(message='Email Inválido'), Length(max=50)])
     username = StringField('Usuário: ', validators=[InputRequired(), Length(min=4, max=15)])
@@ -45,13 +28,10 @@ class Form(FlaskForm):
     resumo = StringField('Resumo Pessoal: ', validators =[InputRequired(), Length(min=5, max=500)])
 
 
-
-
     def validate_username(self, username):
-            usuario = users.query.filter_by(usename=username.data).first()
+            usuario = users.query.filter_by(usuario=username.data).first()
             if usuario:
                 raise ValidationError("Esse usuario já foi cadastrado. Tente usar outro nick para continuar")
-
 
     def validate_email(self, email):  
         usuario = users.query.filter_by(email=email.data).first()
