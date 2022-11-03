@@ -1,0 +1,52 @@
+{% extends  "base.html" %}
+{% block title %} Forms {% endblock %}
+{% block content %}
+<div class="imagem-fundo-form">
+        <div class="main-form">
+            <form class="formulario" action="#" method="post">
+                <img src="static/assets/images/Formulario.png">
+                <div class="fields">
+                    <label for="nm">Qual o seu nome?</label><br>
+                    <input type="text" class="caixa-form" name="nm" id="nm" /><br>
+                    <label for="ra">Qual o seu e-mail?</label><br>
+                    <input type="email" class="caixa-form" name="em" id="em" /><br>
+                    <label for="ra">Qual a sua senha?</label><br>
+                    <input type="password" class="caixa-form" name="pss" id="pss" /><br>
+                    <label for="ra">Qual o seu RA?</label><br>
+                    <input type="text" class="caixa-form" name="ra" id="ra" /><br>
+                    <label for="se">Qual o seu semestre?</label><br>
+                    <input type="text" class="caixa-form" name="se" id="se" /><br>
+                    <label for="tm">Há quanto tempo você programa?</label><br>
+                    <input type="text" class="caixa-form" name="tm" id="tm" /><br>
+                    <label for="lg">Qual sua linguagem de programação preferida?</label><br>
+                    <input type="text" class="caixa-form" name="lg" id="lg" /><br>
+                    <label for="so">Qual seu Sistema Operacional?</label><br>
+                    <input type="text" class="caixa-form" name="so" id="so" /><br>
+                    <div class="fields-range">
+                        <label for="py">De 0 a 10, o quão bom você é em Python?</label><br>
+                        <input class="points" type="range" name="py" id="py" min="0" max="10" step="1"/><br>
+                        <label for="js">De 0 a 10, o quão bom você é em JavaScript?</label><br>
+                        <input class="points" type="range" name="js" id="js" min="0" max="10" step="1"/><br>
+                        <label for="c">De 0 a 10, o quão bom você é em C++?</label><br>
+                        <input class="points" type="range" name="c" id="c" min="0" max="10" step="1"/><br>
+                        <label for="html">De 0 a 10, o quão bom você é em HTML/CSS?</label><br>
+                        <input class="points" type="range" name="html" id="html" min="0" max="10" step="1"/><br>
+                        <label for="jv">De 0 a 10, o quão bom você é em Java?</label><br>
+                        <input class="points" type="range" name="jv" id="jv" min="0" max="10" step="1"/><br>
+                    </div>
+                    <label class="texto-resumo"  for="rs">
+                        Fale um pouco sobre você, qual área da programação você trabalha/pretende trabalhar,
+                        qual área que você tem interesse ou acha mais promissora.
+                    </label><br>
+                    <input class="caixa-form-maior" type="text" name="rs" id="rs"/><br>
+                    <div><br>
+                        <button class="botao-form" type="submit">
+                            <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
