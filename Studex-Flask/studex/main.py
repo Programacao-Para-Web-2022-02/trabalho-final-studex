@@ -1,47 +1,44 @@
 from flask import redirect, url_for, render_template, request, Blueprint, flash, Response, jsonify
-# from studex.forms import Form, LoginForm
 from studex import create_app, db
+from flask_login import login_user, login_required, logout_user, current_user
 from studex.Models.Usuario import Usuario
 from studex.Services.LoginServices import logincheckout
 from studex.DAO.FormDAO import form_add_user
 
 
-principal = Blueprint('main', __name__)
+main = Blueprint('main', __name__)
 app = create_app()
 
 
-@app.route('/')
+@main.route('/')
 def home():
-    print()
-    return render_template("forms.html")
+    return render_template("home.html")
 
 # Login
 
 
-@app.route("/login", methods=["POST", "GET"])
+@main.route("/login", methods=["POST", "GET"])
 def login():
-    # form = LoginForm()
-    logincheckout(form)
+    if request.method == 'POST':
+        print(list(request.values.values()))
+        logincheckout(list(request.values.values()))
 
     return render_template("login.html")
 
 
-@app.route("/form", methods=["POST", "GET"])
-def form():
-    # form = Form()
-    # form_add_user(form)
-    return render_template("form.html")
+@main.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect('/login')
 
 
-@app.route("/forms", methods=["POST", "GET"])
+@main.route("/forms", methods=["POST", "GET"])
+@login_required
 def forms():
     if request.method == 'POST':
-        print(list(request.values.values()))
-        if not form_add_user(list(request.values.values())):
-            flash('Usuário já existe.', category='error')
 
-        else:
-            flash('Usuário cadastrado com sucesso!', category='success')
+        form_add_user(list(request.values.values()))
 
     return render_template("forms.html")
 

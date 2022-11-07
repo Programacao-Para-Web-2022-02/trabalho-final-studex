@@ -28,6 +28,10 @@ def create_app():
     with app.app_context():
         db.create_all()
 
+    from main import main
+
+    app.register_blueprint(main, url_prefix='/')
+
     login_manager = LoginManager()
     login_manager.login_view = 'main.login'
     login_manager.init_app(app)

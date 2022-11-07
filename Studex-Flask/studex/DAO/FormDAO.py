@@ -10,7 +10,7 @@ def form_add_user(form: list):
     user = Usuario.query.filter_by(email=email).first()
 
     if user:
-        return False
+        return flash('Usuário já cadastrado.', category='error')
 
     new_user = Usuario(
         usuario=form[0],
@@ -30,4 +30,4 @@ def form_add_user(form: list):
 
     db.session.add(new_user)
     db.session.commit()
-    return True
+    return flash('Usuário cadastrado com sucesso!', category='success')
