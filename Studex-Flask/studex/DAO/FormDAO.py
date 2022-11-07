@@ -1,26 +1,33 @@
-from flask import redirect, url_for, render_template, request
+from flask import redirect, url_for, render_template, request, flash
 # from studex.forms import Form, LoginForm
 from studex import create_app, db
 from studex.Models.Usuario import Usuario
 
 
-def form_add_user(form, request_method):
-    if request_method == 'POST':
-        new_user = Usuario(usuario=form.username.data,
-                        email=form.email.data,
-                        senha=form.password.data,
-                        nome=form.nome.data,
-                        ra=form.ra.data,
-                        tempo_prog=form.tempo_prog.data,
-                        ling_pref=form.ling_pref.data,
-                        sis_op=form.sis_op.data,
-                        nivel_py=form.nivel_py.data,
-                        nivel_js=form.nivel_js.data,
-                        nivel_c=form.nivel_c.data,
-                        nivel_htmlcss=form.nivel_htmlcss.data,
-                        nivel_java=form.nivel_java.data,
-                        resumo=form.resumo.data)
+def form_add_user(form: list):
 
-        db.session.add(new_user)
-        db.session.commit()
-        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {User.query.all()}<br> !</h1> '
+    email = form[1]
+    user = Usuario.query.filter_by(email=email).first()
+
+    if user:
+        return False
+
+    new_user = Usuario(
+        usuario=form[0],
+        email=form[1],
+        senha=form[2],
+        ra=form[3],
+        semestre=form[4],
+        tempo=form[5],
+        linguagem=form[6],
+        so=form[7],
+        python=form[8],
+        javascript=form[9],
+        c=form[10],
+        html=form[11],
+        java=form[12],
+        resumo=form[13])
+
+    db.session.add(new_user)
+    db.session.commit()
+    return True

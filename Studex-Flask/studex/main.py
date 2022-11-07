@@ -1,4 +1,4 @@
-from flask import redirect, url_for, render_template, request, Blueprint
+from flask import redirect, url_for, render_template, request, Blueprint, flash, Response, jsonify
 # from studex.forms import Form, LoginForm
 from studex import create_app, db
 from studex.Models.Usuario import Usuario
@@ -12,6 +12,7 @@ principal = Blueprint('main', __name__)
 
 @app.route('/')
 def home():
+    print()
     return render_template("forms.html")
 
 # Login
@@ -19,43 +20,30 @@ def home():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    form = LoginForm()
+    # form = LoginForm()
     logincheckout(form)
 
-    return render_template("login.html", form=form)
+    return render_template("login.html")
 
 
 @app.route("/form", methods=["POST", "GET"])
 def form():
-    form = Form()
-    form_add_user(form, request.method)
-    return render_template("form.html", form=form)
+    # form = Form()
+    # form_add_user(form)
+    return render_template("form.html")
 
 
 @app.route("/forms", methods=["POST", "GET"])
 def forms():
-    if request.method == "POST":
-        new_user = Usuario(
-                        usuario=request.form["nm"],
-                        email= request.form["em"],
-                        senha=request.form["pss"],
-                        ra=request.form["ra"],
-                        semestre=request.form["se"],
-                        tempo=request.form["tm"],
-                        linguagem=request.form["lg"],
-                        so=request.form["so"],
-                        python=request.form["py"],
-                        javascript=request.form["js"],
-                        c=request.form["c"],
-                        html=request.form["html"],
-                        java=request.form["jv"],
-                        resumo=request.form["rs"])
+    if request.method == 'POST':
 
-        db.session.add(new_user)
-        db.session.commit()
-        return f'<h1>Novo Usuário foi criado <br> Todos os Usuario = {Usuario.query.all()}<br> !</h1> '
+        if not form_add_user(list(request.values.values())):
+            flash('Usuário já existe.', category='error')
 
-    return render_template("forms.html", form=form)
+        else:
+            flash('Usuário cadastrado com sucesso!', category='success')
+
+    return render_template("forms.html")
 
 
 if __name__ == '__main__':
