@@ -28,7 +28,6 @@ def create_app():
     with app.app_context():
         db.create_all()
 
-
     login_manager = LoginManager()
     login_manager.login_view = 'main.login'
     login_manager.init_app(app)

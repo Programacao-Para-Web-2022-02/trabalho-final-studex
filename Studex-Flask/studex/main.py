@@ -1,10 +1,12 @@
 from flask import redirect, url_for, render_template, request, Blueprint, flash, Response, jsonify
 # from studex.forms import Form, LoginForm
-from __init__ import create_app
+from studex import create_app, db
+from studex.Models.Usuario import Usuario
 from studex.Services.LoginServices import logincheckout
 from studex.DAO.FormDAO import form_add_user
 
-# main = Blueprint('main', __name__)
+
+principal = Blueprint('main', __name__)
 app = create_app()
 
 
@@ -31,10 +33,10 @@ def form():
     return render_template("form.html")
 
 
-@app.route("/forms", methods=['GET', "POST"])
+@app.route("/forms", methods=["POST", "GET"])
 def forms():
     if request.method == 'POST':
-
+        print(list(request.values.values()))
         if not form_add_user(list(request.values.values())):
             flash('Usuário já existe.', category='error')
 

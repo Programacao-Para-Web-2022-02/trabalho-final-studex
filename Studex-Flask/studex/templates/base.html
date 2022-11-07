@@ -3,6 +3,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 {% with mensagens = get_flashed_messages(with_categories=true) %}
         {% if mensagens %}
 
@@ -25,7 +26,7 @@
                         </button>
                     </div>
 
-                {% elif category == 'emaili' %}
+                {% elif category == 'success' %}
                     <div style="padding: 20px; color: white; text-align: center;" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ mensagem }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -130,6 +131,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+
 <body>
 
     <div class="navbar">
