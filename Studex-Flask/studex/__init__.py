@@ -20,8 +20,8 @@ def create_app():
     # Bootstrap(app)
     db.init_app(app)
 
-    # from main import principal
-    # app.register_blueprint(principal, url_prefix='/')
+    # from studex.main import main
+    # app.register_blueprint(main, url_prefix='/')
 
     from Models.Usuario import Usuario
 

@@ -1,13 +1,11 @@
 from flask import redirect, url_for, render_template, request, Blueprint, flash, Response, jsonify
 # from studex.forms import Form, LoginForm
-from studex import create_app, db
-from studex.Models.Usuario import Usuario
+from __init__ import create_app
 from studex.Services.LoginServices import logincheckout
 from studex.DAO.FormDAO import form_add_user
 
-
+# main = Blueprint('main', __name__)
 app = create_app()
-principal = Blueprint('main', __name__)
 
 
 @app.route('/')
@@ -33,7 +31,7 @@ def form():
     return render_template("form.html")
 
 
-@app.route("/forms", methods=["POST", "GET"])
+@app.route("/forms", methods=['GET', "POST"])
 def forms():
     if request.method == 'POST':
 
