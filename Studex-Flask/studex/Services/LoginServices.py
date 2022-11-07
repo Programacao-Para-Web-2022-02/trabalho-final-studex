@@ -1,15 +1,21 @@
-from flask import redirect, url_for, render_template, request
-# from studex.forms import Form, LoginForm
+from flask import redirect, url_for, render_template, request, flash
 from studex import create_app, db
+from flask_login import login_user, login_required, logout_user, current_user
 from studex.Models.Usuario import Usuario
 
 
-def logincheckout(form):
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = Usuario.query.filter_by(usename=form.username.data).first()
-        if user:
-            if user.senha == form.password.data:
-                return redirect(url_for("home"))
+def logincheckout(user: list):
 
-        return '<h1> usuário ou senha inválida </h1>'
+    email = user[1]
+    senha = user[2]
+
+    usuario = Usuario.query.filter_by(email=email).first()
+    print(usuario, email)
+    if not usuario:
+        return flash('Usuário ou senha incorretos.', category='error')
+
+    elif usuario.senha != senha:
+        return flash('Usuário ou senha incorretos.', category='error')
+
+    login_user(usuario)
+    return flash('Login efetuado com sucesso', category='success')

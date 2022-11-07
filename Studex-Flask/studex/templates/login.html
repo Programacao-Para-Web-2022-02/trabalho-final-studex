@@ -1,33 +1,80 @@
 {% extends  "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% block title %} Login {% endblock %}
+{% block title %} Formulario {% endblock %}
 
 {% block content %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-                <p>{{msg}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+<style>
+    body {
+        background-color: #191919;
+    }
 
-<div class="imagem-fundo-form">
-        <div class="main-form">
-            <form class="formulario" action="/login" method="POST">
-                <img src="static/assets/images/Formulario.png">
-                <div class="fields">
-                    {{ form.hidden_tag() }}
-                    {{ wtf.form_field(form.username) }}
-                    {{ wtf.form_field(form.password) }}
-                    {{ wtf.form_field(form.remember) }}
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <form method="POST">
 
-                    <button class="botao-form" type="submit">
-                        <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="form-group">
+        <h3>Login</h3>
+        <label for="email"></label>
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Email"
+            />
+
+        <label for="password"></label>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+
+                placeholder="Senha"
+            />
+
+
+
+        <label for="login"></label>
+            <input
+                type="submit"
+                class="form-control"
+                id="login"
+                name="Login"
+                value = "Login"
+            />
+
+        <a href="/registro">
+                <label for="Registrar"></label>
+                <input
+                    type="button"
+                    class="btn btn-primary"
+                    id="Registrar"
+                    name="Sign-up"
+                    value = "Sign Up"
+                />
+        </a>
+
+        <a href="/password-recover">
+                <label for="password_recover"></label>
+                <input
+                    type="button"
+                    class="btn btn-primary"
+                    id="password_recover"
+                    name="Recuperação de Senha"
+                    value = "Recuperação de Senha"
+                />
+        </a>
+
+
     </div>
 
-{% endblock %}
 
+     <script type="text/javascript">
+      $(".menu-toggle-btn").click(function(){
+        $(this).toggleClass("fa-times");
+        $(".navigation-menu").toggleClass("active");
+      });
+    </script>
+
+</form>
+{% endblock %}
