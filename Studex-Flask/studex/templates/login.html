@@ -1,18 +1,17 @@
 {% extends  "base.html" %}
-{% block title %} Formulario {% endblock %}
+{% block title %} Login {% endblock %}
 
 {% block content %}
 <style>
     body {
         background-color: #191919;
     }
-
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <form method="POST">
-
+ <div class="centro">
+ <form class="grupo" method="POST">
     <div class="form-group">
-        <h3>Login</h3>
+        <img class="imagem-login" src="static/assets/images/login.png">
         <label for="email"></label>
             <input
                 type="email"
@@ -25,16 +24,13 @@
         <label for="password"></label>
             <input
                 type="password"
-                class="form-control"
+                class="form-control login"
                 id="password"
                 name="password"
-
                 placeholder="Senha"
             />
 
-
-
-        <label for="login"></label>
+        <label class="login-label" for="login"></label>
             <input
                 type="submit"
                 class="form-control"
@@ -50,7 +46,7 @@
                     class="btn btn-primary"
                     id="Registrar"
                     name="Sign-up"
-                    value = "Sign Up"
+                    value = "Registre-se"
                 />
         </a>
 
@@ -64,10 +60,9 @@
                     value = "Recuperação de Senha"
                 />
         </a>
-
-
     </div>
 
+ </div>
 
      <script type="text/javascript">
       $(".menu-toggle-btn").click(function(){

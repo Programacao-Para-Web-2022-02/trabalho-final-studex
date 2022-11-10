@@ -15,7 +15,9 @@ def home():
     return render_template("home.html")
 
 # Login
-
+@main.route('/perfil')
+def perfil():
+    return render_template("perfil.html")
 
 @main.route("/login", methods=["POST", "GET"])
 def login():
@@ -25,23 +27,19 @@ def login():
 
     return render_template("login.html")
 
-
 @main.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect('/login')
 
-
 @main.route("/forms", methods=["POST", "GET"])
-@login_required
 def forms():
     if request.method == 'POST':
 
         form_add_user(list(request.values.values()))
 
     return render_template("forms.html")
-
 
 if __name__ == '__main__':
     app.run(debug=True)
