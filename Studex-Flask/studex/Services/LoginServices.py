@@ -4,17 +4,14 @@ from flask_login import login_user, login_required, logout_user, current_user
 from studex.Models.Usuario import Usuario
 
 
-def logincheckout(user: list):
+def logincheckout(user: dict):
 
-    email = user[1]
-    senha = user[2]
+    usuario = Usuario.query.filter_by(email=user['email']).first()
 
-    usuario = Usuario.query.filter_by(email=email).first()
-    print(usuario, email)
     if not usuario:
         return flash('Usuário ou senha incorretos.', category='error')
 
-    elif usuario.senha != senha:
+    elif usuario.senha != user['password']:
         return flash('Usuário ou senha incorretos.', category='error')
 
     login_user(usuario)
