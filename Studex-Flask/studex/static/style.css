@@ -160,7 +160,7 @@ body{
 }
 .bloco-informacoes{
     width: 680px;
-    height: 900px;
+    height: 920px;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -181,7 +181,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-.nome-perfil{color: white;}
+.nome-perfil{color: white; font-size: 45px;}
 .ra-perfil{color: white; margin-left: 10%;}
 .bloco-icone{ display: flex; align-items: center; justify-content: center}
 .icone-perfil{}
@@ -191,12 +191,26 @@ body{
     height: 652px;
     border-radius: 40px;
 }
-.bloco-info -area{}
-.area-perfil{}
+.bloco-info-area{display: flex; align-items: center; justify-content: center;}
+.area-perfil{
+    border-radius: 20px;
+    color: white;
+    background-color: #6493EB;
+    width: 150px;
+    height: 40px;
+    margin-top: 7%;
+    text-align: center;}
 .fundo-azul-perfil{}
 .bloco-info-semestre{}
-.semestre-perfil{}
-.bloco-info-so-tempo-ling{}
+.semestre-perfil{color: #6493EB}
+.bloco-info-so-tempo-ling{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
 .so-perfil{}
 .tempo-perfil{}
 .ling-perfil{}

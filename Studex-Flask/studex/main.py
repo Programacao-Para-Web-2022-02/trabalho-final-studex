@@ -9,7 +9,6 @@ from studex.DAO.FormDAO import form_add_user
 main = Blueprint('main', __name__)
 app = create_app()
 
-
 @main.route('/')
 def home():
     return render_template("home.html")
