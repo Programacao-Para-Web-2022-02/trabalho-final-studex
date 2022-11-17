@@ -14,5 +14,11 @@ def logincheckout(user: dict):
     elif usuario.senha != user['password']:
         return flash('Usuário ou senha incorretos.', category='error')
 
-    login_user(usuario)
+    login_user(usuario, remember=True)
     return flash('Login efetuado com sucesso', category='success')
+
+
+def roubei(user: dict):
+    usuario = Usuario.query.filter_by(email=user['email']).first()
+
+    return usuario

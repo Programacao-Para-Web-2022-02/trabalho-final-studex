@@ -6,8 +6,8 @@
     <div class="bloco-informacoes">
         <div class="foto-pokebola-branca">
             <div class="bloco-nome-ra">
-                <h1 class="nome-perfil"> Pedro Henrique </h1>
-                <h1 class="ra-perfil"> #22105593</h1>
+                <h1 class="nome-perfil"> {{usuario.usuario}} </h1>
+                <h1 class="ra-perfil"> #{{usuario.ra}}</h1>
             </div>
 
             <div class="bloco-icone">
@@ -20,29 +20,27 @@
             </div>
 
             <div class="bloco-info-semestre">
-                <h1 class="semestre-perfil"> 4° Semestre </h1>
+                <h1 class="semestre-perfil"> {{usuario.semestre}} Semestre </h1>
             </div>
 
             <div class="bloco-info-so-tempo-ling">
                 <div class="so-perfil">
-                    <b class="texto-especial">Linux</b>
+                    <b class="texto-especial">{{usuario.so}}</b>
                     <br> Sistema Operacional</div>
 
                 <div class="linha-reta-perfil"></div>
                 <div class="tempo-perfil">
-                    <b class="texto-especial">2 anos</b>
+                    <b class="texto-especial">{{usuario.tempo}}</b>
                     <br>Tempo que Programação </div>
 
                 <div class="linha-reta-perfil"></div>
                 <div class="ling-perfil">
-                <b class="texto-especial">Python</b>
+                <b class="texto-especial">{{usuario.linguagem}}</b>
                     <br>Linguagem Preferida</div>
             </div>
 
             <div class="bloco-info-resumo">
-                <h2 class="texto-resumo-perfil">Tem uma vasta expêriencia com Ciência de Dados, atuando principalmente
-                    na manuteção do banco e como DataOps. Atualmente, trabalha no Ministério da Infraestrutura,
-                    tendo muito interesse na área de Machine Learning.</h2>
+                <h2 class="texto-resumo-perfil">{{usuario.resumo}}</h2>
             </div>
 
             <h1 style="color: #6493EB;">Proficiência Linguagens</h1>
@@ -65,12 +63,12 @@
                     <div>060</div>
                 </div>
                 <div class="progresso-perfil">
-                    <progress value="90" max="100"></progress><br>
-                    <progress value="85" max="100"></progress><br>
-                    <progress value="65" max="100"></progress><br>
-                    <progress value="80" max="100"></progress><br>
-                    <progress value="65" max="100"></progress><br>
-                    <progress value="60" max="100"></progress><br>
+                    <progress value={{usuario.python}} max="10"></progress><br>
+                    <progress value={{usuario.javascript}} max="10"></progress><br>
+                    <progress value={{usuario.c}} max="10"></progress><br>
+                    <progress value={{usuario.html}} max="10"></progress><br>
+                    <progress value={{usuario.html}} max="10"></progress><br>
+                    <progress value={{usuario.python}} max="10"></progress><br>
                 </div>
             </div>
         </div>
