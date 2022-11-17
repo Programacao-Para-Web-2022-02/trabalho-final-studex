@@ -7,7 +7,7 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 DB_NAME = 'Studex'
-senha_db = '1234'
+senha_db = '123456'
 
 
 def create_app():
