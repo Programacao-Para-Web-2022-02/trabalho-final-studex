@@ -133,8 +133,8 @@
     {% endwith %}
 
 <body>
-
     <div class="navbar">
+        {% if user.is_authenticated %}
         <div class="logo itens-nav">
             <a href="/"><img class="logo-foto" src="/static/assets/images/Studex.png"></a>
         </div>
@@ -143,10 +143,6 @@
             </a></div>
         <div class="itens-nav"><a>
                 <h3 class="nav-texto">Como Funciona</h3>
-            </a></div>
-        <div class="itens-nav">
-            <a href="/forms" target="_blank">
-                <h3 class="nav-texto">Registre o seu</h3>
             </a></div>
 
         <div class="itens-nav">
@@ -157,6 +153,28 @@
         <div class="logo itens-nav">
             <a href="/login"><img class="logout" src="/static/assets/images/logout.png"></a>
         </div>
+
+        {% else %}
+        <div class="logo itens-nav">
+            <a href="/"><img class="logo-foto" src="/static/assets/images/Studex.png"></a>
+        </div>
+        <div class="itens-nav"><a>
+                <h3 class="nav-texto">Sobre</h3>
+            </a></div>
+        <div class="itens-nav"><a>
+                <h3 class="nav-texto">Como Funciona</h3>
+            </a></div>
+
+        <div class="itens-nav">
+            <a href="/forms" target="_blank">
+                <h3 class="nav-texto">Registre o seu</h3>
+            </a>
+        </div>
+        <div class="logo itens-nav">
+            <a href="/login"><img class="logout" src="/static/assets/images/logout.png"></a>
+        </div>
+
+        {% endif %}
 
     </div>
 
