@@ -28,7 +28,6 @@ def pesquisar():
 def login():
     if request.method == 'POST':
         logincheckout(request.values.to_dict())
-
     return render_template("login.html", user=current_user)
 
 
