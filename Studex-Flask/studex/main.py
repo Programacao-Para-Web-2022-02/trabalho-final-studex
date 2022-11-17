@@ -19,6 +19,11 @@ def home():
 def perfil():
     return render_template("perfil.html", user=current_user)
 
+@main.route('/pesquisar')
+@login_required
+def pesquisar():
+    return render_template("pesquisar.html", user=current_user)
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
