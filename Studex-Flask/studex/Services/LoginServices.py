@@ -1,11 +1,15 @@
 from flask import redirect, url_for, render_template, request, flash
-from studex import create_app, db
+from __init__ import create_app, db
 from flask_login import login_user, login_required, logout_user, current_user
-from studex.Models.Usuario import Usuario
+from Models.Usuario import Usuario
+
+usuario = None
 
 
-def logincheckout(user: dict):
 
+def logincheck(user: dict):
+
+    global usuario
     usuario = Usuario.query.filter_by(email=user['email']).first()
 
     if not usuario:
@@ -18,7 +22,7 @@ def logincheckout(user: dict):
     return flash('Login efetuado com sucesso', category='success')
 
 
-def roubei(user: dict):
-    usuario = Usuario.query.filter_by(email=user['email']).first()
+def salva_usuario(id):
+    usuario = Usuario.query.filter_by(id=id).first()
 
     return usuario
