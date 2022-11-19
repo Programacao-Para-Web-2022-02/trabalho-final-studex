@@ -2,6 +2,7 @@ from flask import redirect, url_for, render_template, request, flash
 # from studex.forms import Form, LoginForm
 from __init__ import create_app, db
 from Models.Usuario import Usuario
+from werkzeug.security import generate_password_hash
 
 
 def form_add_user(form: list):
@@ -15,7 +16,7 @@ def form_add_user(form: list):
     new_user = Usuario(
         usuario=form['nm'],
         email=form['em'],
-        senha=form['pss'],
+        senha=generate_password_hash(form['pss'], method='sha256'),
         ra=form['ra'],
         semestre=form['se'],
         tempo=form['tm'],

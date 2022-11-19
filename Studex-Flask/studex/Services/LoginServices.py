@@ -1,21 +1,17 @@
-from flask import redirect, url_for, render_template, request, flash
-from __init__ import create_app, db
-from flask_login import login_user, login_required, logout_user, current_user
+from flask import flash
+from flask_login import login_user
 from Models.Usuario import Usuario
-
-usuario = None
-
+from werkzeug.security import check_password_hash
 
 
 def logincheck(user: dict):
 
-    global usuario
     usuario = Usuario.query.filter_by(email=user['email']).first()
 
     if not usuario:
         return flash('Usuário ou senha incorretos.', category='error')
 
-    elif usuario.senha != user['password']:
+    elif check_password_hash(usuario.senha, user['password']):
         return flash('Usuário ou senha incorretos.', category='error')
 
     login_user(usuario, remember=True)
