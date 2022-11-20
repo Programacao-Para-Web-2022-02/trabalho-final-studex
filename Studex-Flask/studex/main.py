@@ -3,16 +3,18 @@ from studex import create_app
 from flask_login import login_required, logout_user, current_user
 from studex.Services.LoginServices import logincheckout, roubei
 from studex.DAO.FormDAO import form_add_user
+from flask_googlemaps import Map
 
 
 main = Blueprint('app', __name__)
 app = create_app()
 
 
+
 @app.route('/')
 def home():
     global usuario
-    print(usuario)
+    #print(usuario)
     return render_template("home.html", user=current_user)
 
 
@@ -27,6 +29,38 @@ def perfil():
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
+
+@app.route("/mapa")
+def mapview():
+    mymap = Map(
+        identifier="view-side",
+        lat=37.4419,
+        lng=-122.1419,
+        markers=[(37.4419, -122.1419)]
+    )
+    sndmap = Map(
+        identifier="sndmap",
+        lat=37.4419,
+        lng=-122.1419,
+        markers=[
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+             'lat': 37.4419,
+             'lng': -122.1419,
+             'infobox': "<b>Hello World</b>"
+          },
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+             'lat': 37.4300,
+             'lng': -122.1400,
+             'infobox': "<b>Hello World from other place</b>"
+          }
+        ]
+    )
+    return render_template('mapa.html', mymap=mymap, sndmap=sndmap, user=current_user)
+
+
+
 
 
 @app.route("/login", methods=["POST", "GET"])
