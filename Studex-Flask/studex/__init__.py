@@ -9,6 +9,7 @@ from flask_googlemaps import GoogleMaps
 
 
 
+
 db = SQLAlchemy()
 DB_NAME = 'Studex'
 senha_db = '123456'
@@ -22,9 +23,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://root:{senha_db}@localhost/Studex'
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    app.config['GOOGLEMAPS_KEY'] = "AIzaSyD4c_798PtEHYjZBhkF1VN9PioH_4Cru8Y"
-    GoogleMaps(app)
-    GoogleMaps(app, key="AIzaSyD4c_798PtEHYjZBhkF1VN9PioH_4Cru8Y")
 
     # Bootstrap(app)
     db.init_app(app)

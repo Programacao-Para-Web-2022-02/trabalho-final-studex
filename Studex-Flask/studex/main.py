@@ -3,13 +3,13 @@ from studex import create_app
 from flask_login import login_required, logout_user, current_user
 from studex.Services.LoginServices import logincheckout, roubei
 from studex.DAO.FormDAO import form_add_user
+from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 
 
 main = Blueprint('app', __name__)
 app = create_app()
-
-
+GoogleMaps(app, key="8JZ7i18MjFuM35dJHq70n3Hx4")
 
 @app.route('/')
 def home():
@@ -17,13 +17,11 @@ def home():
     #print(usuario)
     return render_template("home.html", user=current_user)
 
-
 @app.route('/perfil')
 @login_required
 def perfil():
     global usuario
     return render_template("perfil.html", user=current_user, usuario=usuario)
-
 
 @app.route('/pesquisar')
 @login_required
@@ -59,10 +57,6 @@ def mapview():
     )
     return render_template('mapa.html', mymap=mymap, sndmap=sndmap, user=current_user)
 
-
-
-
-
 @app.route("/login", methods=["POST", "GET"])
 def login():
     global usuario
@@ -72,13 +66,11 @@ def login():
         usuario = roubei(request.values.to_dict())
     return render_template("login.html", user=current_user, usuario=usuario)
 
-
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect('/login')
-
 
 @app.route("/forms", methods=["POST", "GET"])
 def forms():
