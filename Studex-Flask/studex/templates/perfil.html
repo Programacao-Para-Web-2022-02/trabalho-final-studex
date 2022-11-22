@@ -6,21 +6,20 @@
     <div class="bloco-informacoes">
         <div class="foto-pokebola-branca">
             <div class="bloco-nome-ra">
-                <h1 class="nome-perfil"> {{usuario.usuario}} </h1>
-                <h1 class="ra-perfil"> #{{usuario.ra}}</h1>
+                    <h1 class="nome-perfil"> {{usuario.usuario}} </h1>
+                    <h1 class="ra-perfil"> #{{usuario.ra}}</h1>
             </div>
-
             <div class="bloco-icone">
-                <img class="icone-perfil" src="static/assets/images/icon.png">
+                <img class="icone-perfil" src="static/assets/images/poke10.png">
             </div>
         </div>
         <div class="quadrado-branco-perfil">
             <div class="bloco-info-area">
-                <div class="fundo-azul-perfil"><h1 class="area-perfil"> Dados </h1></div>
+                <div class="fundo-azul-perfil"><h1 class="area-perfil"> Perfil </h1></div>
             </div>
 
             <div class="bloco-info-semestre">
-                <h1 class="semestre-perfil"> {{usuario.semestre}} Semestre </h1>
+                <h1 class="semestre-perfil"> {{usuario.semestre}}° Semestre </h1>
             </div>
 
             <div class="bloco-info-so-tempo-ling">
@@ -30,7 +29,7 @@
 
                 <div class="linha-reta-perfil"></div>
                 <div class="tempo-perfil">
-                    <b class="texto-especial">{{usuario.tempo}}</b>
+                    <b class="texto-especial">{{usuario.tempo}} anos</b>
                     <br>Tempo que Programação </div>
 
                 <div class="linha-reta-perfil"></div>
@@ -43,7 +42,7 @@
                 <h2 class="texto-resumo-perfil">{{usuario.resumo}}</h2>
             </div>
 
-            <h1 style="color: #6493EB;">Proficiência Linguagens</h1>
+            <h1 style="color: #74347e;">Proficiência Linguagens</h1>
             <div class="bloco-info-linguagens">
                 <div>
                     <div class="py-perfil">PY</div>
@@ -55,12 +54,12 @@
                 </div>
                 <div class="barra-lateral-info"></div>
                 <div class="numeros-info-perfil">
-                    <div>090</div>
-                    <div>085</div>
-                    <div>065</div>
-                    <div>080</div>
-                    <div>065</div>
-                    <div>060</div>
+                    <div>{{usuario.python}}0</div>
+                    <div>{{usuario.javascript}}0</div>
+                    <div>{{usuario.c}}0</div>
+                    <div>{{usuario.html}}0</div>
+                    <div>{{usuario.html}}0</div>
+                    <div>{{usuario.java}}0</div>
                 </div>
                 <div class="progresso-perfil">
                     <progress value={{usuario.python}} max="10"></progress><br>
@@ -68,9 +67,10 @@
                     <progress value={{usuario.c}} max="10"></progress><br>
                     <progress value={{usuario.html}} max="10"></progress><br>
                     <progress value={{usuario.html}} max="10"></progress><br>
-                    <progress value={{usuario.python}} max="10"></progress><br>
+                    <progress value={{usuario.java}} max="10"></progress><br>
                 </div>
             </div>
+         <br><br><br>
         </div>
     </div>
 </div>
@@ -78,25 +78,22 @@
 <div class="botoes-crud">
     <div class="editar-crud">
         <ul>
-            <li><a href="#" aria-haspopup="true">Editar</a>
-              <ul class="dropdown" aria-label="submenu">
-                    <li><a href="#">Semestre</a></li>
-                <li><a href="#">Tempo de Programação</a></li>
-                <li><a href="#">Linguagem Preferida</a></li>
-                <li><a href="#">Sistema Operacional</a></li>
-                <li><a href="#">Conhecimento em Python</a></li>
-                <li><a href="#">Conhecimento em JS</a></li>
-                <li><a href="#">Conhecimento em C++</a></li>
-                <li><a href="#">Conhecimento em HTML/CSS</a></li>
-                <li><a href="#">Conhecimento em Java</a></li>
-                <li><a href="#">Resumo</a></li>
-              </ul>
+            <li><a href="editar" target="_blank" aria-haspopup="true">Editar</a>
+              <!--<ul class="dropdown" aria-label="submenu">
+                  <li><a href="editar">Semestre</a></li>
+                  <li><a href="editar">Tempo de Programação</a></li>
+                  <li><a href="editar">Linguagem Preferida</a></li>
+                  <li><a href="editar">Sistema Operacional</a></li>
+                  <li><a href="editar">Conhecimento em Python</a></li>
+                  <li><a href="editar">Conhecimento em JS</a></li>
+                  <li><a href="editar">Conhecimento em C++</a></li>
+                  <li><a href="editar">Conhecimento em HTML/CSS</a></li>
+                  <li><a href="editar">Conhecimento em Java</a></li>
+                  <li><a href="editar">Resumo</a></li>
+              </ul>-->
             </li>
           </ul>
     </div>
-
-
-
 </div>
 
 {% endblock %}

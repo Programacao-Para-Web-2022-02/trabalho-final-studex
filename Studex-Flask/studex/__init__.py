@@ -3,7 +3,12 @@ from datetime import timedelta
 # from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+
 from flask_login import LoginManager
+from flask_googlemaps import GoogleMaps
+
+
+
 
 db = SQLAlchemy()
 DB_NAME = 'Studex'
@@ -17,6 +22,8 @@ def create_app():
     app.config['SECRET_KEY'] = 'studexmaiordetodos#tomatomatoma##kjkjkjkjkj'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://root:{senha_db}@localhost/Studex'
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+
     # Bootstrap(app)
     db.init_app(app)
 
