@@ -153,12 +153,12 @@ body{
 }
 .bloco-informacoes{
     width: 680px;
-    height: 1000px;
+
     align-items: center;
     text-align: center;
     justify-content: center;
     border-radius: 40px;
-    background-color: #6493EB;
+    background-color: #8A4993;
     outline: 20px solid white;
     padding: 16px;
 }
@@ -177,24 +177,25 @@ body{
 .nome-perfil{color: white; font-size: 45px;}
 .ra-perfil{color: white; margin-left: 10%;}
 .bloco-icone{ display: flex; align-items: center; justify-content: center}
-.icone-perfil{}
+.icone-perfil{
+    width: 300px;
+}
 .quadrado-branco-perfil{
     display: block;
     background-color: white;
     width: 682px;
-    height: 740px;
     border-radius: 40px;
 }
 .bloco-info-area{display: flex; align-items: center; justify-content: center;}
 .area-perfil{
     border-radius: 20px;
     color: white;
-    background-color: #6493EB;
+    background-color: #74347e;
     width: 150px;
     height: 40px;
     margin-top: 7%;
     text-align: center;}
-.semestre-perfil{color: #6493EB}
+.semestre-perfil{color: #74347e}
 .bloco-info-so-tempo-ling{
     display: flex;
     justify-content: space-between;
@@ -209,17 +210,18 @@ body{
 }
 .bloco-info-resumo{
     display: flex;
+    justify-content: center;
     width: 550px;
     margin-top: 2%;
     margin-left: 10%;
-    font-size: 18px;
+    font-size: 20px;
 }
 .texto-resumo-perfil{
     text-align: justify;
 }
 .bloco-info-linguagens{
     display: flex;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     margin-left: 10%;
     margin-right: 6%;
@@ -227,9 +229,9 @@ body{
     text-align: center;
     align-items: center;
 }
-.progresso-perfil{
+.progresso-perfil {
     font-size: 27px;
-    color: blueviolet;
+    color: #74347e;
 }
 .numeros-info-perfil{font-size: 22px;}
 .barra-lateral-info{
@@ -255,13 +257,12 @@ ul {
     margin-top: 3%;
 
 }
-
 li {
   color: #fff;
   background: #FFE031;
   display: block;
   float: left;
-    width: 300px;
+  width: 300px;
   padding: 1rem;
   position: relative;
   text-decoration: none;
@@ -291,7 +292,6 @@ ul li ul {
   left: 0;
   display: none;
 }
-
 ul li:hover > ul,
 ul li:focus-within > ul,
 ul li ul:hover,

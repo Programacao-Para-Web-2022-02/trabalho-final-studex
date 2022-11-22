@@ -10,6 +10,7 @@ from flask_googlemaps import Map
 main = Blueprint('app', __name__)
 app = create_app()
 GoogleMaps(app, key="8JZ7i18MjFuM35dJHq70n3Hx4")
+usuario = ''
 
 @app.route('/')
 def home():
