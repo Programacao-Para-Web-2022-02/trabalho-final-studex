@@ -1,7 +1,7 @@
 from flask import redirect, render_template, request, Blueprint
-from studex import create_app
+from __init__ import create_app
 from flask_login import login_required, logout_user, current_user
-from studex.Services.LoginServices import logincheckout, roubei
+from studex.Services.LoginServices import logincheckout, salva_usuario
 from studex.DAO.FormDAO import form_add_user
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
@@ -18,8 +18,7 @@ imagem = "static/assets/images/poke" + str(n) + ".png"
 
 @app.route('/')
 def home():
-    global usuario
-    print(usuario)
+
     return render_template("home.html", user=current_user)
 
 @app.route('/editar')
@@ -31,8 +30,8 @@ def editar():
 @app.route('/perfil')
 @login_required
 def perfil():
-    global usuario
-    return render_template("perfil.html", user=current_user, usuario=usuario)
+    
+    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
 @app.route('/pesquisar')
 @login_required
@@ -70,12 +69,11 @@ def mapview():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    global usuario
-    usuario = ''
+    
     if request.method == 'POST':
-        logincheckout(request.values.to_dict())
-        usuario = roubei(request.values.to_dict())
-    return render_template("login.html", user=current_user, usuario=usuario)
+        logincheck(request.values.to_dict())
+        
+    return render_template("login.html", user=current_user)
 
 @app.route("/logout")
 @login_required
@@ -86,8 +84,8 @@ def logout():
 @app.route("/forms", methods=["POST", "GET"])
 def forms():
     if request.method == 'POST':
-
-        form_add_user(list(request.values.values()))
+        print(request.values.to_dict())
+        form_add_user(request.values.to_dict())
 
     return render_template("forms.html", user=current_user)
 
