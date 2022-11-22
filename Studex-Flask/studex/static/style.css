@@ -339,3 +339,64 @@ ul li ul li {
 }
 
 /*Fim Style Pesquisar*/
+/* Inicio Style Editar Campos */
+
+.editar-cima{
+    display: flex;
+    justify-content: center;}
+.editar-nome{
+    margin-right: 70px;
+    border-radius: 20px;
+    width: 250px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+.editar-ra{
+    border-radius: 20px;
+    width: 115px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;}
+.editar-semestre{
+    border-radius: 20px;
+    width: 50px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+.editar-infos{
+    border-radius: 20px;
+    width: 140px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+.editar-resumo{
+    border-radius: 20px;
+    width: 350px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+.editar-prof{
+    border-radius: 20px;
+    width: 50px;
+    height: 20px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 6px;
+}
+.editar-botao{
+    width: 200px;
+    height: 100px;
+    font-weight: bolder;
+    background-color: #FFE031;
+    color: #041b40;
+    font-size: 30px;
+}
+.editar-botao:focus-within {
+  background: red;
+  cursor: pointer;
+}
+/* Fim Style Editar Campos */

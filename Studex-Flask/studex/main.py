@@ -5,6 +5,7 @@ from studex.Services.LoginServices import logincheckout, roubei
 from studex.DAO.FormDAO import form_add_user
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
+from random import randint
 
 
 main = Blueprint('app', __name__)
@@ -12,11 +13,20 @@ app = create_app()
 GoogleMaps(app, key="8JZ7i18MjFuM35dJHq70n3Hx4")
 usuario = ''
 
+n = randint(1, 10)
+imagem = "static/assets/images/poke" + str(n) + ".png"
+
 @app.route('/')
 def home():
     global usuario
-    #print(usuario)
+    print(usuario)
     return render_template("home.html", user=current_user)
+
+@app.route('/editar')
+@login_required
+def editar():
+    global usuario
+    return render_template("editar.html", user=current_user, usuario=usuario)
 
 @app.route('/perfil')
 @login_required
