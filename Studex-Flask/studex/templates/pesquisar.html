@@ -3,17 +3,72 @@
 
 {% block content %}
 
-<div style="display: flex; align-items: center; text-align: center; justify-content: center; margin-top: 5%;">
-    <div class="barra-pesquisar">
-        <img src="static/assets/images/pesquisapoke.png" id="btnBusca" alt="Buscar" />
-        <input class="escrever-pesquisar" type="text" id="txtBusca" placeholder="Buscar..."/>
-        <button class="botao-pesquisar">Buscar</button>
-    </div>
-    <div class="resultados-pesquisar">
-        
+    <div style="display: flex; align-items: center; text-align: center; justify-content: center; margin-top: 5%;">
+        <div class="barra-pesquisar">
+            <img src="static/assets/images/pesquisapoke.png" id="btnBusca" alt="Buscar"/>
+            <input class="escrever-pesquisar" type="text" id="txtBusca" placeholder="Buscar..."/>
+            <button type="submit" class="botao-pesquisar">Buscar</button>
+        </div>
 
-    </div>
+        <button class="botao-filtros-pesquisar" onclick="myFunction()">Filtros</button>
 
-</div>
+        <form>
+            <div id="myDIV">
+                <div class="quadrados-pesquisar">
+
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="melhorPython" name="maiorpy" checked>
+                        <label class="textos-quadrado-pesquisar" for="melhorPython">Melhores em Python</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="melhorJS" name="maiorjs" checked>
+                        <label class="textos-quadrado-pesquisar" for="melhorJS">Melhores em JavaScript</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="melhorJava" name="maiorjava" checked>
+                        <label class="textos-quadrado-pesquisar" for="melhorJava">Melhores em Java</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="melhorHTML" name="maiorhtml" checked>
+                        <label class="textos-quadrado-pesquisar" for="melhorHTML">Melhores em HTML/CSS</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="melhorC" name="maiorc" checked>
+                        <label class="textos-quadrado-pesquisar" for="melhorC">Melhores em C++</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="maiortempo" name="maistempo" checked>
+                        <label class="textos-quadrado-pesquisar" for="maiortempo">Maior tempo de programação</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="winuser" name="win" checked>
+                        <label class="textos-quadrado-pesquisar" for="winuser">Usuários de Windows</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="linuser" name="lin" checked>
+                        <label class="textos-quadrado-pesquisar" for="linuser">Usuários de Linux</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="macuser" name="mac" checked>
+                        <label class="textos-quadrado-pesquisar" for="macuser">Usuários de MacOS</label>
+                    </div>
+                    <div class="quadrado-texto">
+                        <input class="quadrado" type="checkbox" id="semestre" name="semestre" checked>
+                        <label class="textos-quadrado-pesquisar" for="semestre">Semestre</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 
 {% endblock %}
