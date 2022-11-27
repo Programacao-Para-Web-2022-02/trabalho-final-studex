@@ -67,7 +67,65 @@ body {
     background-color: #FFE031;
     border-radius: 30px;
 }
+.sobre{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    text-align: center;
+}
+.imagem-sobre{
+    margin-top: 4%;
+    width: 300px;
+}
+.texto-sobre{
+    color: #ffe031;
+    text-align: justify;
+    font-size: 35px;
+    width: 60%;
+    margin-top: 3%;
+    margin-left: 20.5%;
+}
+.participantes-sobre{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4%;
+}
+.membro-sobre{
+    display: block;
+    padding: 1%;
+}
+.membro-foto{
+    width: 350px;
+}
+.membro-texto{
+    color: #ffe031;
+    font-size: 30px;
+}
+.linkedin-foto{
+    width: 80px;
+}
+.como-funciona{
+    display: block;
+    background-image: url('/static/assets/images/squirtle-funciona.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
 
+.texto-como-funciona{
+    text-align: justify;
+    width: 50%;
+    color: #FFE031;
+    font-size: 34px;
+    margin: 2%;
+}
+.imagem-como-funciona{
+    margin: 3%;
+
+}
 /* Fim Style Home*/
 /* Inicio Style Forms */
 .imagem-fundo-form {
