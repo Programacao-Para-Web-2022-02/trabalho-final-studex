@@ -124,7 +124,14 @@ body {
 }
 .imagem-como-funciona{
     margin: 3%;
-
+}
+.footer{
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: #041b40;
+    justify-content: space-around;
+    width: 100%;
 }
 /* Fim Style Home*/
 /* Inicio Style Forms */
