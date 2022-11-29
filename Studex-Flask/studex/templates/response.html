@@ -1,0 +1,16 @@
+<h3>{{ row }} Resultados Encontrados</h3>
+<table class="table table-striped custab">
+    <thead>
+    <tr>
+        <th>id</th>
+        <a href="/perfil"><th>usuario</th></a>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in usuario %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.usuario }}</td>
+        </tr>
+    {% endfor %}
+

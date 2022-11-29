@@ -1,20 +1,24 @@
-from flask import redirect, render_template, request, Blueprint
+import MySQLdb.cursors
+from flask import redirect, render_template, request, Blueprint, jsonify
 from __init__ import create_app
 from flask_login import login_required, logout_user, current_user
 from Services.LoginServices import logincheck, salva_usuario
-from DAO.FormDAO import form_add_user
+from DAO.FormDAO import form_add_user, db
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from random import randint
+from flask_mysqldb import MySQL, MySQLdb
+from Models import Usuario
+
 
 main = Blueprint('app', __name__)
 app = create_app()
 GoogleMaps(app, key="8JZ7i18MjFuM35dJHq70n3Hx4")
 usuario = ''
-
 n = randint(1, 10)
 imagem = "static/assets/images/poke" + str(n) + ".png"
-
+mysql = MySQL(app)
+row = 0
 
 @app.route('/')
 def home():
@@ -27,9 +31,10 @@ def editar():
     if request.method == 'POST':
         print(request.values.to_dict())
 
-        return request.values.to_dict()
+    #    elif request.method == 'GET':
+    #    return request.values.to_dict()
 
-    return render_template("editar.html", user=current_user, usuario=usuario)
+    return render_template("editar.html", user=current_user)
 
 
 @app.route('/perfil')
@@ -42,6 +47,23 @@ def perfil():
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
+
+@app.route("/ajaxlivesearch", methods=["POST", "GET"])
+def ajaxlivesearch():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method == 'POST':
+        search_word = request.form['query']
+        print(search_word)
+        if search_word == '':
+            query = "SELECT * from usuario ORDER BY id"
+            cur.execute(query)
+            usuario = cur.fetchall()
+        else:
+            query = "SELECT * from usuario ORDER BY id"
+            cur.execute(query)
+            usuario = cur.fetchall()
+
+    return jsonify({'htmlresponse': render_template('response.html', usuario=usuario, row=row)})
 
 
 @app.route("/mapa")

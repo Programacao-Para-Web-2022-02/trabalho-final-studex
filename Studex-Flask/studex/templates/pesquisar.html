@@ -3,14 +3,46 @@
 
 {% block content %}
 
-    <div style="display: flex; align-items: center; text-align: center; justify-content: center; margin-top: 5%;">
+    <script>
+        $(document).ready(function () {
+            load_data();
+            function load_data(query) {
+                $.ajax({
+                    url: "/ajaxlivesearch",
+                    method: "POST",
+                    data: {query:query},
+                    success: function (data) {
+                        $('#result').html(data);
+                        $('#result').append(data.htmlresponse);
+                    }
+                });
+            }
 
+            $('#txtBusca').keyup(function () {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
+                }
+            });
+        });
+
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <div style="display: flex; align-items: center; text-align: center; justify-content: center; margin-top: 5%;">
         <div class="barra-pesquisar">
             <img src="static/assets/images/pesquisapoke.png" id="btnBusca" alt="Buscar"/>
             <input class="escrever-pesquisar" type="text" id="txtBusca" placeholder="Buscar..."/>
             <button type="submit" class="botao-pesquisar">Buscar</button>
         </div>
-
         <button class="botao-filtros-pesquisar" onclick="myFunction()">Filtros</button>
 
         <form method="POST">
@@ -43,71 +75,19 @@
 
                     <div class="container-pesquisar">
                         <h2 style="color: white;">Tempo</h2>
-                        <input class="textos-quadrado-pesquisar" type="radio" id="maiortempo" name="maistempo" >
+                        <input class="textos-quadrado-pesquisar" type="radio" id="maiortempo" name="maistempo">
                         <label class="textos-quadrado-pesquisar" for="maiortempo">Maior tempo de programação</label><br>
-                        <input class="textos-quadrado-pesquisar" type="radio" id="semestre" name="maistempo" >
+                        <input class="textos-quadrado-pesquisar" type="radio" id="semestre" name="maistempo">
                         <label class="textos-quadrado-pesquisar" for="semestre">Semestre</label><br>
                     </div>
-
-                    <!--
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="melhorPython" name="maiorpy" >
-                        <label class="textos-quadrado-pesquisar" for="melhorPython">Melhores em Python</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="melhorJS" name="maiorjs" >
-                        <label class="textos-quadrado-pesquisar" for="melhorJS">Melhores em JavaScript</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="melhorJava" name="maiorjava" >
-                        <label class="textos-quadrado-pesquisar" for="melhorJava">Melhores em Java</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="melhorHTML" name="maiorhtml" >
-                        <label class="textos-quadrado-pesquisar" for="melhorHTML">Melhores em HTML/CSS</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="melhorC" name="maiorc" >
-                        <label class="textos-quadrado-pesquisar" for="melhorC">Melhores em C++</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="maiortempo" name="maistempo" >
-                        <label class="textos-quadrado-pesquisar" for="maiortempo">Maior tempo de programação</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="winuser" name="win" >
-                        <label class="textos-quadrado-pesquisar" for="winuser">Usuários de Windows</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="linuser" name="lin" >
-                        <label class="textos-quadrado-pesquisar" for="linuser">Usuários de Linux</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="macuser" name="mac" >
-                        <label class="textos-quadrado-pesquisar" for="macuser">Usuários de MacOS</label>
-                    </div>
-                    <div class="quadrado-texto">
-                        <input class="quadrado" type="radio" id="semestre" name="semestre" >
-                        <label class="textos-quadrado-pesquisar" for="semestre">Semestre</label>
-                    </div>
-
-                    -->
-
                     <button class="botao-aplicar-pesquisa" type="submit"> Aplicar Filtros</button>
                 </div>
             </div>
         </form>
     </div>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+
+    <div class="resultado-pesquisa" id="result"></div>
+
 
 {% endblock %}
 

@@ -9,8 +9,9 @@
                 <div class="foto-pokebola-branca">
                     <div class="bloco-nome-ra">
                         <div class="editar-cima">
-                            <input class="editar-nome" id="nm">
-                            <input class="editar-ra" id="em">
+                            <input class="editar-nome" type="text" id="nm" value="{{ user.usuario }}">
+                            <label for="nm"></label>
+                            <input class="editar-ra" type="text" id="em" value="{{ user.ra }}">
                         </div>
                     </div>
                     <div class="bloco-icone">
@@ -23,30 +24,30 @@
                     </div>
 
                     <div class="bloco-info-semestre">
-                        <input class="editar-semestre" id="se">
+                        <input class="editar-semestre" id="se" type="text" value="{{ user.semestre }}">
                     </div>
                     <br><br>
                     <div class="bloco-info-so-tempo-ling">
                         <div class="so-perfil">
-                            <input class="editar-infos" id="so">
+                            <input class="editar-infos" id="so" type="text" value="{{ user.so }}">
                             <br> Sistema Operacional
                         </div>
 
                         <div class="linha-reta-perfil"></div>
                         <div class="tempo-perfil">
-                            <input class="editar-infos" id="tm">
+                            <input class="editar-infos" id="tm" type="text" value="{{ user.tempo }}">
                             <br>Tempo que Programação
                         </div>
 
                         <div class="linha-reta-perfil"></div>
                         <div class="ling-perfil">
-                            <input class="editar-infos" id="lg">
+                            <input class="editar-infos" id="lg" type="text" value="{{ user.linguagem }}">
                             <br>Linguagem Preferida
                         </div>
                     </div>
 
                     <div class="bloco-info-resumo">
-                        <input class="editar-resumo" id="rs">
+                        <input class="editar-resumo" id="rs" type="text" value="{{ user.resumo }}">
                     </div>
 
                     <h1 style="color: #74347e;">Proficiência Linguagens</h1>
@@ -62,12 +63,12 @@
                         <div class="barra-lateral-info"></div>
                         <div class="numeros-info-perfil">
                             <div style="display: block;">
-                                <input class="editar-prof" id="py"><br>
-                                <input class="editar-prof" id="js"><br>
-                                <input class="editar-prof" id="c"><br>
-                                <input class="editar-prof" id="html"><br>
-                                <input class="editar-prof" id="html"><br>
-                                <input class="editar-prof" id="java"><br>
+                                <input class="editar-prof" id="py" type="text" value="{{ user.python }}"><br>
+                                <input class="editar-prof" id="js"  type="text" value="{{ user.javascript }}"><br>
+                                <input class="editar-prof" id="c" type="text" value="{{ user.c }}"><br>
+                                <input class="editar-prof" id="html" type="text" value="{{ user.html }}"><br>
+                                <input class="editar-prof" id="html" type="text" value="{{ user.html }}"><br>
+                                <input class="editar-prof" id="java" type="text" value="{{ user.java }}"><br>
                             </div>
                         </div>
                         <div class="progresso-perfil">

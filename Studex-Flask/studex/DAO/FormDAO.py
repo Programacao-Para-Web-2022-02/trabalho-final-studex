@@ -32,3 +32,4 @@ def form_add_user(form: list):
     db.session.add(new_user)
     db.session.commit()
     return flash('Usuário cadastrado com sucesso!', category='success')
+

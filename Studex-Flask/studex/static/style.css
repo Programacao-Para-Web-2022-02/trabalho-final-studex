@@ -557,7 +557,15 @@ ul li ul li {
     display: flex;
 }
 .quadrados-pesquisar{
+    padding: 10px;
     margin-left: 10px;
+}
+.resultado-pesquisa{
+    width: 1000px;
+    text-align: center;
+    height: 500px;
+    background-color: white;
+    color: #ffe031;
 }
 .textos-quadrado-pesquisar {
     color: white;
