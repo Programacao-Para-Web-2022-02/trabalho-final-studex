@@ -500,6 +500,22 @@ ul li ul li {
     background: orangered;
 }
 
+.container-pesquisar{
+    display: block;
+    text-align: justify;
+}
+.botao-aplicar-pesquisa{
+    width: 130px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #3D69BB;
+    background-color: #ffe031;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 12%;
+}
+
 .barra-pesquisar img {
     width: 100px;
 }
@@ -540,7 +556,9 @@ ul li ul li {
 .quadrado-texto {
     display: flex;
 }
-
+.quadrados-pesquisar{
+    margin-left: 10px;
+}
 .textos-quadrado-pesquisar {
     color: white;
     margin-top: 18px;

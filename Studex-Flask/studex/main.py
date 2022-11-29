@@ -20,10 +20,15 @@ imagem = "static/assets/images/poke" + str(n) + ".png"
 def home():
     return render_template("home.html", user=current_user)
 
-@app.route('/editar')
+@app.route('/editar', methods=["POST", "GET"])
 @login_required
 def editar():
     global usuario
+    if request.method == 'POST':
+        print(request.values.to_dict())
+
+        return request.values.to_dict()
+
     return render_template("editar.html", user=current_user, usuario=usuario)
 
 
