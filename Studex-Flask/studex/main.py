@@ -20,7 +20,6 @@ imagem = "static/assets/images/poke" + str(n) + ".png"
 def home():
     return render_template("home.html", user=current_user)
 
-
 @app.route('/editar')
 @login_required
 def editar():
