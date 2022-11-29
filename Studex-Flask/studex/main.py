@@ -30,12 +30,23 @@ def editar():
     global usuario
     if request.method == 'POST':
         print(request.values.to_dict())
+        current_user.usuario = request.form['nm']
+        current_user.email = request.form['em']
+        current_user.senha = request.form['pss']
+        current_user.ra = request.form['ra']
+        current_user.semestre = request.form['se']
+        current_user.tempo = request.form['tm']
+        current_user.linguagem = request.form['lg']
+        current_user.so = request.form['so']
+        current_user.python = request.form['py']
+        current_user.javascript = request.form['js']
+        current_user.c = request.form['c']
+        current_user.html = request.form['html']
+        current_user.java = request.form['jv']
+        current_user.resumo = request.form['rs']
+        db.session.commit()
 
-    #    elif request.method == 'GET':
-    #    return request.values.to_dict()
-
-    return render_template("editar.html", user=current_user)
-
+    return render_template("editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
 @app.route('/perfil')
 @login_required

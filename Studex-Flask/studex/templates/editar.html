@@ -4,14 +4,59 @@
 {% block content %}
 
     <form action="#" method="POST" name="formData">
+        <div class="container-edicao">
+            <div class="inputs-edicao">
+                <label for="nm" class="titulo-edicao"> Editar Nome: </label>
+                <input type="text" class="editar-nome" id="nm" name="nm" value="{{ user.usuario }}"><br>
+                <label for="em" class="titulo-edicao"> Editar E-mail: </label>
+                <input type="email" class="editar-nome" id="em" name="em" value="{{ user.email }}"><br>
+                <label for="pss" class="titulo-edicao"> Editar Senha: </label>
+                <input type="password" class="editar-nome" id="pss" name="pss" value="{{ user.senha }}"><br>
+                <label for="ra" class="titulo-edicao"> Editar RA: </label>
+                <input type="text" class="editar-nome" id="ra" name="ra" value="{{ user.ra }}"><br>
+                <label for="se" class="titulo-edicao"> Editar Semestre: </label>
+                <input type="text" class="editar-nome" id="se" name="se" value="{{ user.semestre }}"><br>
+                <label for="tm" class="titulo-edicao"> Editar Senha: </label>
+                <input type="text" class="editar-nome" id="tm" name="tm" value="{{ user.tempo }}"><br>
+                <label for="lg" class="titulo-edicao"> Editar Senha: </label>
+                <input type="text" class="editar-nome" id="lg" name="lg" value="{{ user.linguagem }}"><br>
+                <label for="so" class="titulo-edicao"> Editar S.O.: </label>
+                <input type="text" class="editar-nome" id="so" name="so" value="{{ user.so }}"><br>
+                <label for="py" class="titulo-edicao"> Editar Python: </label>
+                <input type="range" class="editar-nome" id="py" name="py" min="0" max="10" step="1"
+                       value="{{ user.python }}"><br>
+                <label for="js" class="titulo-edicao"> Editar JavaScript: </label>
+                <input type="range" class="editar-nome" id="js" name="js" min="0" max="10" step="1"
+                       value="{{ user.javascript }}"><br>
+                <label for="c" class="titulo-edicao"> Editar C: </label>
+                <input type="range" class="editar-nome" id="c" name="c" min="0" max="10" step="1"
+                       value="{{ user.c }}"><br>
+                <label for="html" class="titulo-edicao"> Editar HTML/CSS: </label>
+                <input type="range" class="editar-nome" id="html" name="html" min="0" max="10" step="1"
+                       value="{{ user.html }}"><br>
+                <label for="jv" class="titulo-edicao"> Editar Java: </label>
+                <input type="range" class="editar-nome" id="jv" name="jv" min="0" max="10" step="1"
+                       value="{{ user.java }}"><br>
+                <label for="rs" class="titulo-edicao"> Editar Resumo: </label>
+                <input type="text" class="editar-nome" id="rs" name="rs" value="{{ user.resumo }}"><br>
+
+                <div style="display: flex; justify-content: center; margin-top:2%;">
+                    <button class="editar-botao" type="submit">
+                        Confirmar Alterações
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!--
         <div class="bloco-centro">
             <div class="bloco-informacoes">
                 <div class="foto-pokebola-branca">
                     <div class="bloco-nome-ra">
                         <div class="editar-cima">
-                            <input class="editar-nome" type="text" id="nm" value="{{ user.usuario }}">
-                            <label for="nm"></label>
-                            <input class="editar-ra" type="text" id="em" value="{{ user.ra }}">
+                            <input class="editar-nome" type="text" id="nm" name="nm" value="{{ user.usuario }}">
+                            <input class="editar-ra" type="text" id="em" name="em" value="{{ user.ra }}">
                         </div>
                     </div>
                     <div class="bloco-icone">
@@ -24,30 +69,30 @@
                     </div>
 
                     <div class="bloco-info-semestre">
-                        <input class="editar-semestre" id="se" type="text" value="{{ user.semestre }}">
+                        <input class="editar-semestre" id="se" type="text" name="se" value="{{ user.semestre }}" >
                     </div>
                     <br><br>
                     <div class="bloco-info-so-tempo-ling">
                         <div class="so-perfil">
-                            <input class="editar-infos" id="so" type="text" value="{{ user.so }}">
+                            <input class="editar-infos" id="so" type="text" name="so"  value="{{ user.so }}">
                             <br> Sistema Operacional
                         </div>
 
                         <div class="linha-reta-perfil"></div>
                         <div class="tempo-perfil">
-                            <input class="editar-infos" id="tm" type="text" value="{{ user.tempo }}">
+                            <input class="editar-infos" id="tm" type="text" name="tm"  value="{{ user.tempo }}">
                             <br>Tempo que Programação
                         </div>
 
                         <div class="linha-reta-perfil"></div>
                         <div class="ling-perfil">
-                            <input class="editar-infos" id="lg" type="text" value="{{ user.linguagem }}">
+                            <input class="editar-infos" id="lg" name="lg" type="text"  value="{{ user.linguagem }}">
                             <br>Linguagem Preferida
                         </div>
                     </div>
 
                     <div class="bloco-info-resumo">
-                        <input class="editar-resumo" id="rs" type="text" value="{{ user.resumo }}">
+                        <input class="editar-resumo" id="rs" name="rs" type="text"  value="{{ user.resumo }}" >
                     </div>
 
                     <h1 style="color: #74347e;">Proficiência Linguagens</h1>
@@ -56,33 +101,29 @@
                             <div class="py-perfil">PY</div>
                             <div class="js-perfil">JS</div>
                             <div class="cpp-perfil">C++</div>
-                            <div class="html-perfil">HTML</div>
-                            <div class="css-perfil">CSS</div>
+                            <div class="html-perfil">HTML/CSS</div>
                             <div class="java-perfil">JAVA</div>
                         </div>
                         <div class="barra-lateral-info"></div>
                         <div class="numeros-info-perfil">
                             <div style="display: block;">
-                                <input class="editar-prof" id="py" type="text" value="{{ user.python }}"><br>
-                                <input class="editar-prof" id="js"  type="text" value="{{ user.javascript }}"><br>
-                                <input class="editar-prof" id="c" type="text" value="{{ user.c }}"><br>
-                                <input class="editar-prof" id="html" type="text" value="{{ user.html }}"><br>
-                                <input class="editar-prof" id="html" type="text" value="{{ user.html }}"><br>
-                                <input class="editar-prof" id="java" type="text" value="{{ user.java }}"><br>
+                                <input class="editar-prof" id="py" type="text" name="py" value="{{ user.python }}"><br>
+                                <input class="editar-prof" id="js"  type="text" name="js" value="{{ user.javascript }}"><br>
+                                <input class="editar-prof" id="c" type="text" name="c"  value="{{ user.c }}"><br>
+                                <input class="editar-prof" id="html" type="text" name="html" value="{{ user.html }}"><br>
+                                <input class="editar-prof" id="java" type="text" name="java"  value="{{ user.java }}"><br>
                             </div>
                         </div>
                         <div class="progresso-perfil">
-                            <progress max="10"></progress>
+                            <progress min="1" max="10" value="{{ user.python }}"></progress>
                             <br>
-                            <progress max="10"></progress>
+                            <progress min="1" max="10" value="{{ user.javascript }}"></progress>
                             <br>
-                            <progress max="10"></progress>
+                            <progress min="1" max="10" value="{{ user.c }}"></progress>
                             <br>
-                            <progress max="10"></progress>
+                            <progress min="1" max="10" value="{{ user.html }}"></progress>
                             <br>
-                            <progress max="10"></progress>
-                            <br>
-                            <progress max="10"></progress>
+                            <progress min="1" max="10" value="{{ user.java }}"></progress>
                             <br>
                         </div>
                     </div>
@@ -90,11 +131,8 @@
                 </div>
             </div>
         </div>
-        <div style="display: flex; justify-content: center; margin-top:2%;">
-            <button class="editar-botao" type="submit">
-                Confirmar Alterações
-            </button>
-        </div>
+         -->
+
     </form>
 
 

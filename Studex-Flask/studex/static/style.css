@@ -586,6 +586,21 @@ ul li ul li {
 
 /*Fim Style Pesquisar*/
 /* Inicio Style Editar Campos */
+.inputs-edicao{
+    display: block;
+}
+.container-edicao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.titulo-edicao{
+    color: #ffe031;
+    font-size: 25px;
+    margin-left: 11px;
+}
+
 
 .editar-cima {
     display: flex;
