@@ -30,6 +30,7 @@ def editar():
     global usuario
     if request.method == 'POST':
         print(request.values.to_dict())
+        print(current_user.ra)
         current_user.usuario = request.form['nm']
         current_user.email = request.form['em']
         current_user.senha = request.form['pss']
@@ -48,10 +49,16 @@ def editar():
 
     return render_template("editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
+@app.route('/perfil/<ra>')
+@login_required
+def perfil_ra(ra):
+    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
+
 @app.route('/perfil')
 @login_required
 def perfil():
     return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
+
 
 
 @app.route('/pesquisar')
@@ -65,12 +72,12 @@ def ajaxlivesearch():
     if request.method == 'POST':
         search_word = request.form['query']
         print(search_word)
-        if search_word == current_user.usuario:
-            query = f"SELECT usuario from usuario ORDER BY id"
+        if search_word == " ":
+            query = "SELECT * from usuario"
             cur.execute(query)
             usuario = cur.fetchall()
-        else:
-            query = "SELECT * from usuario ORDER BY id"
+        elif search_word != " ":
+            query = f"SELECT usuario FROM usuario WHERE usuario LIKE '{search_word}%';"
             cur.execute(query)
             usuario = cur.fetchall()
 

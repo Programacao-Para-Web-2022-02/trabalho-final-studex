@@ -1,16 +1,25 @@
-<h3>{{ row }} Resultados Encontrados</h3>
-<table class="table table-striped custab">
+<div class="resultado2-pesquisa">
+    <div>
+        <h2 class="titulo-response-usuario">Perfis</h2>
+    </div>
+
+    {% for row in usuario %}
+        <div class="resultado-response-usuario">
+            <a href="perfil/{{ row.usuario.ra }}" target="_blank">
+                <h3> {{ row.usuario }} </h3></a>
+        </div>
+    {% endfor %}
+</div>
+
+
+<!--
+<table class="">
     <thead>
     <tr>
-        <th>id</th>
-        <a href="/perfil"><th>usuario</th></a>
+        <a href="/perfil"><th>Usuario</th></a>
     </tr>
     </thead>
     <tbody>
-    {% for row in usuario %}
-        <tr>
-            <td>{{ row.id }}</td>
-            <td>{{ row.usuario }}</td>
-        </tr>
-    {% endfor %}
 
+</table>
+-->

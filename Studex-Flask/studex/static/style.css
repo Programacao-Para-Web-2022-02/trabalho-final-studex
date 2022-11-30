@@ -575,13 +575,26 @@ ul li ul li {
     padding: 10px;
     margin-left: 10px;
 }
+.titulo-response-usuario{
+    font-size: 40px;
+}
+.resultado-response-usuario{
+    background-color: #E0E0E0;
+    color: #74347e;
+    font-size: 25px;
+}
 
 .resultado-pesquisa {
     width: 1000px;
     text-align: center;
-    height: 500px;
+    outline: 20px solid grey;
+    border-radius: 30px;
+    margin-top: 2%;;
     background-color: white;
     color: #ffe031;
+}
+.resultado2-pesquisa{
+    text-align: center;
 }
 
 .textos-quadrado-pesquisar {
