@@ -1,25 +1,26 @@
+
 <div class="resultado2-pesquisa">
     <div>
         <h2 class="titulo-response-usuario">Perfis</h2>
     </div>
+    <div></div>
+    <div></div>
 
     {% for row in usuario %}
-        <div class="resultado-response-usuario">
-            <a href="perfil/{{ row.usuario.ra }}" target="_blank">
-                <h3> {{ row.usuario }} </h3></a>
-        </div>
+        <form action="/perfil-singular" method="POST">
+            <div class="resultado-response-usuario">
+                <a href="/perfil-singular" target="_blank">
+                    <button id="ra-ind" name="ra-ind" type="submit" value="{{ row.ra }}">
+                        <h3> Ver Perfil</h3>
+                    </button>
+                </a>
+                <div class=resultado-response-usuario">
+                  <h3>{{ row.usuario }}</h3>
+                </div>
+            </div>
+        </form>
+
     {% endfor %}
+
 </div>
 
-
-<!--
-<table class="">
-    <thead>
-    <tr>
-        <a href="/perfil"><th>Usuario</th></a>
-    </tr>
-    </thead>
-    <tbody>
-
-</table>
--->

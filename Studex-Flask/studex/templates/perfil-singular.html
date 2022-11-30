@@ -1,0 +1,95 @@
+{% extends  "base.html" %}
+{% block title %} Perfil {% endblock %}
+
+{% block content %}
+    {{ n }}
+    <div></div>
+    {% for row in usuario %}
+        <div class="bloco-centro">
+            <div class="bloco-informacoes">
+                <div class="foto-pokebola-branca">
+                    <div class="bloco-nome-ra">
+                        <h1 class="nome-perfil"> {{ row.usuario }} </h1>
+                        <h1 class="ra-perfil"> #{{ row.ra }}</h1>
+                    </div>
+                    <div class="bloco-icone">
+                        <img class="icone-perfil" src="static/assets/images/poke{{ n }}.png">
+                    </div>
+                </div>
+                <div class="quadrado-branco-perfil">
+                    <div class="bloco-info-area">
+                        <div class="fundo-azul-perfil"><h1 class="area-perfil"> Perfil </h1></div>
+                    </div>
+
+                    <div class="bloco-info-semestre">
+                        <h1 class="semestre-perfil"> {{ row.semestre }}° Semestre </h1>
+                    </div>
+
+                    <div class="bloco-info-so-tempo-ling">
+                        <div class="so-perfil">
+                            <b class="texto-especial">{{ row.so }}</b>
+                            <br> Sistema Operacional
+                        </div>
+
+                        <div class="linha-reta-perfil"></div>
+                        <div class="tempo-perfil">
+                            <b class="texto-especial">{{ row.tempo }} anos</b>
+                            <br>Tempo que Programação
+                        </div>
+
+                        <div class="linha-reta-perfil"></div>
+                        <div class="ling-perfil">
+                            <b class="texto-especial">{{ row.linguagem }}</b>
+                            <br>Linguagem Preferida
+                        </div>
+                    </div>
+
+                    <div class="bloco-info-resumo">
+                        <h2 class="texto-resumo-perfil">{{ row.resumo }}</h2>
+                    </div>
+
+                    <h1 style="color: #74347e;">Proficiência Linguagens</h1>
+                    <div class="bloco-info-linguagens">
+                        <div>
+                            <div class="py-perfil">PY</div>
+                            <div class="js-perfil">JS</div>
+                            <div class="cpp-perfil">C++</div>
+                            <div class="html-perfil">HTML</div>
+                            <div class="css-perfil">CSS</div>
+                            <div class="java-perfil">JAVA</div>
+                        </div>
+                        <div class="barra-lateral-info"></div>
+                        <div class="numeros-info-perfil">
+                            <div>{{ row.python }}0</div>
+                            <div>{{ row.javascript }}0</div>
+                            <div>{{ row.c }}0</div>
+                            <div>{{ row.html }}0</div>
+                            <div>{{ row.html }}0</div>
+                            <div>{{ row.java }}0</div>
+                        </div>
+                        <div class="progresso-perfil">
+                            <progress value={{ row.python }} max="10"></progress>
+                            <br>
+                            <progress value={{ row.javascript }} max="10"></progress>
+                            <br>
+                            <progress value={{ row.c }} max="10"></progress>
+                            <br>
+                            <progress value={{ row.html }} max="10"></progress>
+                            <br>
+                            <progress value={{ row.html }} max="10"></progress>
+                            <br>
+                            <progress value={{ row.java }} max="10"></progress>
+                            <br>
+                        </div>
+                    </div>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+
+{% endblock %}

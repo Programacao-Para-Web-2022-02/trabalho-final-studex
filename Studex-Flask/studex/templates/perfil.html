@@ -2,6 +2,7 @@
 {% block title %} Perfil {% endblock %}
 
 {% block content %}
+    {{ n }}
     <div class="bloco-centro">
         <div class="bloco-informacoes">
             <div class="foto-pokebola-branca">
@@ -10,7 +11,7 @@
                     <h1 class="ra-perfil"> #{{ usuario.ra }}</h1>
                 </div>
                 <div class="bloco-icone">
-                    <img class="icone-perfil" src="static/assets/images/poke1.png">
+                    <img class="icone-perfil" src="static/assets/images/poke{{ n }}.png">
                 </div>
             </div>
             <div class="quadrado-branco-perfil">

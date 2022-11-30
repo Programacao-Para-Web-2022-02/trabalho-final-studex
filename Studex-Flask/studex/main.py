@@ -1,28 +1,29 @@
 import MySQLdb.cursors
-from flask import redirect, render_template, request, Blueprint, jsonify
+from flask import redirect, render_template, request, Blueprint, jsonify, url_for
 from __init__ import create_app
 from flask_login import login_required, logout_user, current_user
 from Services.LoginServices import logincheck, salva_usuario
 from DAO.FormDAO import form_add_user, db
 from flask_googlemaps import GoogleMaps
-from flask_googlemaps import Map
+# from flask_googlemaps import Map
 from random import randint
 from flask_mysqldb import MySQL, MySQLdb
-from Models import Usuario
+
+# from Models import Usuario
 
 
 main = Blueprint('app', __name__)
 app = create_app()
 GoogleMaps(app, key="8JZ7i18MjFuM35dJHq70n3Hx4")
 usuario = ''
-n = randint(1, 10)
-imagem = "static/assets/images/poke" + str(n) + ".png"
 mysql = MySQL(app)
 row = 0
+
 
 @app.route('/')
 def home():
     return render_template("home.html", user=current_user)
+
 
 @app.route('/editar', methods=["POST", "GET"])
 @login_required
@@ -49,22 +50,46 @@ def editar():
 
     return render_template("editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
-@app.route('/perfil/<ra>')
+@app.route('/filtros', methods=["POST", "GET"])
 @login_required
-def perfil_ra(ra):
-    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
+def filtros():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method == 'POST':
+        ra = request.form['ra-ind']
+        query = f"SELECT * FROM usuario WHERE ra = '{ra}';"
+        cur.execute(query)
+        usuario = cur.fetchall()
+
+    return render_template("perfil-singular.html", user=current_user, usuario=usuario,
+                           n=randint(1, 10), row=row)
+
+
+@app.route('/perfil-singular', methods=["POST", "GET"])
+@login_required
+def perfil_singular():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method == 'POST':
+        ra = request.form['ra-ind']
+        query = f"SELECT * FROM usuario WHERE ra = '{ra}';"
+        cur.execute(query)
+        usuario = cur.fetchall()
+
+    return render_template("perfil-singular.html", user=current_user, usuario=usuario,
+                           n=randint(1, 10), row=row)
+
 
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
-
+    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
+                           n=randint(1, 10))
 
 
 @app.route('/pesquisar')
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
+
 
 @app.route("/ajaxlivesearch", methods=["POST", "GET"])
 def ajaxlivesearch():
@@ -77,7 +102,7 @@ def ajaxlivesearch():
             cur.execute(query)
             usuario = cur.fetchall()
         elif search_word != " ":
-            query = f"SELECT usuario FROM usuario WHERE usuario LIKE '{search_word}%';"
+            query = f"SELECT * FROM usuario WHERE usuario LIKE '{search_word}%';"
             cur.execute(query)
             usuario = cur.fetchall()
 
@@ -86,7 +111,6 @@ def ajaxlivesearch():
 
 @app.route("/mapa")
 def mapview():
-
     return render_template('mapa.html', user=current_user)
 
 
