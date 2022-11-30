@@ -67,18 +67,21 @@ body {
     background-color: #FFE031;
     border-radius: 30px;
 }
-.sobre{
+
+.sobre {
     display: block;
     align-items: center;
     justify-content: center;
     background-color: black;
     text-align: center;
 }
-.imagem-sobre{
+
+.imagem-sobre {
     margin-top: 4%;
     width: 300px;
 }
-.texto-sobre{
+
+.texto-sobre {
     color: #ffe031;
     text-align: justify;
     font-size: 35px;
@@ -86,26 +89,32 @@ body {
     margin-top: 3%;
     margin-left: 20.5%;
 }
-.participantes-sobre{
+
+.participantes-sobre {
     display: flex;
     justify-content: center;
     margin-bottom: 4%;
 }
-.membro-sobre{
+
+.membro-sobre {
     display: block;
     padding: 1%;
 }
-.membro-foto{
+
+.membro-foto {
     width: 350px;
 }
-.membro-texto{
+
+.membro-texto {
     color: #ffe031;
     font-size: 30px;
 }
-.linkedin-foto{
+
+.linkedin-foto {
     width: 80px;
 }
-.como-funciona{
+
+.como-funciona {
     display: block;
     background-image: url('/static/assets/images/squirtle-funciona.png');
     background-repeat: no-repeat;
@@ -115,17 +124,19 @@ body {
     width: 100%;
 }
 
-.texto-como-funciona{
+.texto-como-funciona {
     text-align: justify;
     width: 50%;
     color: #FFE031;
     font-size: 34px;
     margin: 2%;
 }
-.imagem-como-funciona{
+
+.imagem-como-funciona {
     margin: 3%;
 }
-.footer{
+
+.footer {
     display: flex;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -133,6 +144,7 @@ body {
     justify-content: space-around;
     width: 100%;
 }
+
 /* Fim Style Home*/
 /* Inicio Style Forms */
 .imagem-fundo-form {
@@ -273,7 +285,6 @@ body {
 
 .bloco-informacoes {
     width: 680px;
-
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -500,11 +511,13 @@ ul li ul li {
     background: orangered;
 }
 
-.container-pesquisar{
+.container-pesquisar {
     display: block;
     text-align: justify;
+
 }
-.botao-aplicar-pesquisa{
+
+.botao-aplicar-pesquisa {
     width: 130px;
     height: 35px;
     font-size: 16px;
@@ -556,17 +569,20 @@ ul li ul li {
 .quadrado-texto {
     display: flex;
 }
-.quadrados-pesquisar{
+
+.quadrados-pesquisar {
     padding: 10px;
     margin-left: 10px;
 }
-.resultado-pesquisa{
+
+.resultado-pesquisa {
     width: 1000px;
     text-align: center;
     height: 500px;
     background-color: white;
     color: #ffe031;
 }
+
 .textos-quadrado-pesquisar {
     color: white;
     margin-top: 18px;
@@ -586,21 +602,23 @@ ul li ul li {
 
 /*Fim Style Pesquisar*/
 /* Inicio Style Editar Campos */
-.inputs-edicao{
+.inputs-edicao {
     display: block;
+    margin-top: 20px;
 }
-.container-edicao{
+
+.container-edicao {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    text-align: justify;
+    margin-left: 10%;
 }
-.titulo-edicao{
+
+.titulo-edicao {
     color: #ffe031;
-    font-size: 25px;
-    margin-left: 11px;
+    font-size: 33px;
 }
-
 
 .editar-cima {
     display: flex;
