@@ -8,6 +8,7 @@ from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from random import randint
 from flask_mysqldb import MySQL, MySQLdb
+from util import bd
 
 main = Blueprint('app', __name__)
 app = create_app()
@@ -227,12 +228,10 @@ def perfil():
     return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
                            n=randint(1, 10))
 
-
 @app.route('/pesquisar')
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
-
 
 @app.route("/ajaxlivesearch", methods=["POST", "GET"])
 def ajaxlivesearch():
@@ -254,7 +253,17 @@ def ajaxlivesearch():
 
 @app.route("/mapa")
 def mapview():
-    return render_template('mapa.html', user=current_user)
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    query = 'SELECT idt_ponto, lat_ponto, lng_ponto FROM tb_ponto'
+    cur.execute(query)
+    tabela = cur.fetchall()
+    marcadores = ''
+    icone = "{icon:greenIcon}"
+    for idt, lat, lng in tabela:
+        marcadores += 'var mk_{} = L.marker([{}, {}], {}).addTo(m);\n'.format(idt, lat, lng, icone)
+
+    return render_template('mapa.html', marcadores=marcadores, user=current_user)
+
 
 
 @app.route("/login", methods=["POST", "GET"])

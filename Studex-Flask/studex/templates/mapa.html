@@ -1,31 +1,45 @@
-{{googlemap("my_awesome_map", lat=0.23234234, lng=-0.234234234, markers=[(0.12,
--0.45345)])}}
+{% extends  "base.html" %}
+{% block title %} Mapa {% endblock %}
 
+{% block content %}
+{{ n }}
 <html>
-  <head>
-    {{"decoupled-map"|googlemap_js(37.4419, -122.1419, markers=[(37.4419,
-    -122.1419)])}} {{mymap.js}} {{sndmap.js}}
-  </head>
-  <body>
-    <h1>Flask Google Maps Example</h1>
+<head>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+ integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+ crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+ integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+ crossorigin=""></script>
+<script >
+  function iniciar(){
+    var m = L.map('mapa').setView([-15.8081, -47.9317], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+       maxZoom: 19,
+       attribution: '© OpenStreetMap'
+    }).addTo(m);
+    var greenIcon = L.icon({
+       iconUrl: 'static/assets/images/poke{{ n }}.png',
+       shadowUrl: '',
 
-    <h2>Template function centered, no marker</h2>
-    {{googlemap("simple-map", 37.4419, -122.1419)}}
+       iconSize:     [38, 95], // size of the icon
+       iconSize:     [38, 95], // size of the icon
+       shadowSize:   [50, 64], // size of the shadow
+       iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+       shadowAnchor: [4, 62],  // the same for the shadow
+       popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+   });
+    {{ marcadores | safe }}
+  }
+</script>
+</head>
 
-    <h2>Template filter decoupled with single marker</h2>
-    {{"decoupled-map"|googlemap_html(37.4419, -122.1419)}}
-
-    <h2>Template function with multiple markers</h2>
-    {% with map=googlemap_obj("another-map", 37.4419, -122.1419,
-    markers=[(37.4419, -122.1419), (37.4300, -122.1400)]) %} {{map.html}}
-    {{map.js}} {% endwith %}
-
-    <h2>First map generated in view</h2>
-    {{mymap.html}}
-
-    <h2>Second map generated in view</h2>
-    <h3>Example for different icons in multiple markers with infoboxes</h3>
-    {{sndmap.html}}
-  </body>
+<body onload="iniciar();">
+<div id="mapa" style="width: 800px; height:600px; padding: 20px; border: solid blue 2px;"></div>
+<br>
+<a href="/">[ Volta para o menu ] </a>
+</body>
 </html>
 
+
+{% endblock %}
