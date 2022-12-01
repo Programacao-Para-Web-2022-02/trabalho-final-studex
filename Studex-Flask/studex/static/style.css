@@ -525,9 +525,9 @@ ul li ul li {
     font-weight: bolder;
     color: #3D69BB;
     background-color: #ffe031;
-    margin-top: 2%;
+    margin-top: 3%;
     margin-bottom: 2%;
-    margin-left: 12%;
+
 }
 
 .barra-pesquisar img {
@@ -577,7 +577,8 @@ ul li ul li {
 }
 
 .titulo-response-usuario {
-    font-size: 40px;
+    font-size: 45px;
+    color: #74347e;
 }
 
 .resultado-response-usuario {
@@ -624,7 +625,7 @@ ul li ul li {
     color: #ffe031;
     border-radius: 15px;
     width: 100px;
-    height: 50px;
+    height: 100px;
     margin-left: 10px;
     font-size: 25px;
 }
