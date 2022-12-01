@@ -11,7 +11,7 @@ def logincheck(user: dict):
     if not usuario:
         return flash('Usuário ou senha incorretos.', category='error')
 
-    elif check_password_hash(usuario.senha, user['password']):
+    elif not check_password_hash(usuario.senha, user['password']):
         return flash('Usuário ou senha incorretos.', category='error')
 
     login_user(usuario, remember=True)
