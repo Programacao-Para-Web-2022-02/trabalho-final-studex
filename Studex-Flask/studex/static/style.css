@@ -575,13 +575,27 @@ ul li ul li {
     padding: 10px;
     margin-left: 10px;
 }
-.titulo-response-usuario{
+
+.titulo-response-usuario {
     font-size: 40px;
 }
-.resultado-response-usuario{
+
+.resultado-response-usuario {
     background-color: #E0E0E0;
     color: #74347e;
+    margin-top: 1%;
     font-size: 25px;
+}
+
+.titulo-perfil-nome {
+    margin-top: 20px;
+    font-size: 35px;
+    padding-top: 1%;
+}
+
+.ver-perfil {
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .resultado-pesquisa {
@@ -593,7 +607,8 @@ ul li ul li {
     background-color: white;
     color: #ffe031;
 }
-.resultado2-pesquisa{
+
+.resultado2-pesquisa {
     text-align: center;
 }
 
