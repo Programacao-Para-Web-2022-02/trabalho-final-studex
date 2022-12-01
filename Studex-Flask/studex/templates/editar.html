@@ -3,98 +3,53 @@
 
 {% block content %}
 
-    <form action="#" method="POST">
-        <div class="bloco-centro">
+    <form action="#" method="POST" name="formData">
+        <div style="display: flex; justify-content: center">
             <div class="bloco-informacoes">
-                <div class="foto-pokebola-branca">
-                    <div class="bloco-nome-ra">
-                        <div class="editar-cima">
-                            <input class="editar-nome" id="{{ usuario.usuario }}" value="{{ usuario.usuario }}">
-                            <input class="editar-ra" id="{{ usuario.ra }}" value="{{ usuario.ra }}">
-                        </div>
-                    </div>
-                    <div class="bloco-icone">
-                        <img class="icone-perfil" src="static/assets/images/poke9.png">
-                    </div>
-                </div>
-                <div class="quadrado-branco-perfil">
-                    <div class="bloco-info-area">
-                        <div class="fundo-azul-perfil"><h1 class="area-perfil"> Perfil </h1></div>
-                    </div>
+                <div class="container-edicao">
+                    <div class="inputs-edicao">
+                        <label for="nm" class="titulo-edicao"> Editar Nome: </label><br>
+                        <input type="text" class="editar-nome" id="nm" name="nm" value="{{ user.usuario }}"><br>
+                        <label for="em" class="titulo-edicao"> Editar E-mail: </label><br>
+                        <input type="email" class="editar-nome" id="em" name="em" value="{{ user.email }}"><br>
+                        <label for="pss" class="titulo-edicao"> Editar Senha: </label><br>
+                        <input type="password" class="editar-nome" id="pss" name="pss" value="{{ user.senha }}"><br>
+                        <label for="ra" class="titulo-edicao"> Editar RA: </label><br>
+                        <input type="text" class="editar-nome" id="ra" name="ra" value="{{ user.ra }}"><br>
+                        <label for="se" class="titulo-edicao"> Editar Semestre: </label><br>
+                        <input type="text" class="editar-nome" id="se" name="se" value="{{ user.semestre }}"><br>
+                        <label for="tm" class="titulo-edicao"> Editar Tempo: </label><br>
+                        <input type="text" class="editar-nome" id="tm" name="tm" value="{{ user.tempo }}"><br>
+                        <label for="lg" class="titulo-edicao"> Editar Linguagem: </label><br>
+                        <input type="text" class="editar-nome" id="lg" name="lg" value="{{ user.linguagem }}"><br>
+                        <label for="so" class="titulo-edicao"> Editar S.O.: </label><br>
+                        <input type="text" class="editar-nome" id="so" name="so" value="{{ user.so }}"><br>
+                        <label for="py" class="titulo-edicao"> Editar Python: </label><br>
+                        <input type="range" class="editar-nome" id="py" name="py" min="0" max="10" step="1"
+                               value="{{ user.python }}"><br>
+                        <label for="js" class="titulo-edicao"> Editar JavaScript: </label><br>
+                        <input type="range" class="editar-nome" id="js" name="js" min="0" max="10" step="1"
+                               value="{{ user.javascript }}"><br>
+                        <label for="c" class="titulo-edicao"> Editar C: </label><br>
+                        <input type="range" class="editar-nome" id="c" name="c" min="0" max="10" step="1"
+                               value="{{ user.c }}"><br>
+                        <label for="html" class="titulo-edicao"> Editar HTML/CSS: </label><br>
+                        <input type="range" class="editar-nome" id="html" name="html" min="0" max="10" step="1"
+                               value="{{ user.html }}"><br>
+                        <label for="jv" class="titulo-edicao"> Editar Java: </label><br>
+                        <input type="range" class="editar-nome" id="jv" name="jv" min="0" max="10" step="1"
+                               value="{{ user.java }}"><br>
+                        <label for="rs" class="titulo-edicao"> Editar Resumo: </label><br>
+                        <input type="text" class="editar-resumo" id="rs" name="rs" value="{{ user.resumo }}"><br>
 
-                    <div class="bloco-info-semestre">
-                        <input class="editar-semestre" id="{{ usuario.semestre }}" value="{{ usuario.semestre }}">
-                    </div>
-                    <br><br>
-                    <div class="bloco-info-so-tempo-ling">
-                        <div class="so-perfil">
-                            <input class="editar-infos" id="{{ usuario.so }}" value="{{ usuario.so }}">
-                            <br> Sistema Operacional
-                        </div>
-
-                        <div class="linha-reta-perfil"></div>
-                        <div class="tempo-perfil">
-                            <input class="editar-infos" id="{{ usuario.tempo }}" value="{{ usuario.tempo }}">
-                            <br>Tempo que Programação
-                        </div>
-
-                        <div class="linha-reta-perfil"></div>
-                        <div class="ling-perfil">
-                            <input class="editar-infos" id="{{ usuario.linguagem }}" value="{{ usuario.linguagem }}">
-                            <br>Linguagem Preferida
+                        <div style="align-items: center; margin-left: 9%; margin-top:2%;">
+                            <button class="editar-botao" type="submit">
+                                Confirmar Alterações
+                            </button>
                         </div>
                     </div>
-
-                    <div class="bloco-info-resumo">
-                        <input class="editar-resumo" id="{{ usuario.resumo }}" value="{{ usuario.resumo }}">
-                    </div>
-
-                    <h1 style="color: #74347e;">Proficiência Linguagens</h1>
-                    <div class="bloco-info-linguagens">
-                        <div>
-                            <div class="py-perfil">PY</div>
-                            <div class="js-perfil">JS</div>
-                            <div class="cpp-perfil">C++</div>
-                            <div class="html-perfil">HTML</div>
-                            <div class="css-perfil">CSS</div>
-                            <div class="java-perfil">JAVA</div>
-                        </div>
-                        <div class="barra-lateral-info"></div>
-                        <div class="numeros-info-perfil">
-                            <div style="display: block;">
-                                <input class="editar-prof" id="{{ usuario.python }}" value="{{ usuario.python }}"><br>
-                                <input class="editar-prof" id="{{ usuario.javascript }}"
-                                       value="{{ usuario.javascript }}"><br>
-                                <input class="editar-prof" id="{{ usuario.c }}" value="{{ usuario.c }}"><br>
-                                <input class="editar-prof" id="{{ usuario.html }}" value="{{ usuario.html }}"><br>
-                                <input class="editar-prof" id="{{ usuario.css }}" value="{{ usuario.html }}"><br>
-                                <input class="editar-prof" id="{{ usuario.java }}" value="{{ usuario.java }}"><br>
-                            </div>
-                        </div>
-                        <div class="progresso-perfil">
-                            <progress value={{ usuario.python }} max="10"></progress>
-                            <br>
-                            <progress value={{ usuario.javascript }} max="10"></progress>
-                            <br>
-                            <progress value={{ usuario.c }} max="10"></progress>
-                            <br>
-                            <progress value={{ usuario.html }} max="10"></progress>
-                            <br>
-                            <progress value={{ usuario.html }} max="10"></progress>
-                            <br>
-                            <progress value={{ usuario.java }} max="10"></progress>
-                            <br>
-                        </div>
-                    </div>
-                    <br><br><br>
                 </div>
             </div>
-        </div>
-        <div style="display: flex; justify-content: center; margin-top:2%;">
-            <button class="editar-botao" type="submit">
-                Confirmar Alterações
-            </button>
-
         </div>
     </form>
 
