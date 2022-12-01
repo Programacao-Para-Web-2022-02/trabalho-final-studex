@@ -9,8 +9,8 @@
     </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <div class="centro">
- <form class="grupo" method="POST">
-    <div class="form-group">
+ <form class="grupo" method="POST" name="myForm">
+     <div class="form-group">
         <img class="imagem-login" src="static/assets/images/login.png">
         <label for="email"></label>
             <input
@@ -37,9 +37,10 @@
                 id="login"
                 name="Login"
                 value = "Login"
+                onclick="submit()"
             />
 
-        <a href="/registro">
+        <a href="/forms">
                 <label for="Registrar"></label>
                 <input
                     type="button"
@@ -62,6 +63,7 @@
         </a>
     </div>
 
+    </form>
  </div>
 
      <script type="text/javascript">
@@ -71,5 +73,4 @@
       });
     </script>
 
-</form>
 {% endblock %}

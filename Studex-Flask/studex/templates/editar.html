@@ -1,0 +1,57 @@
+{% extends  "base.html" %}
+{% block title %} Editar {% endblock %}
+
+{% block content %}
+
+    <form action="#" method="POST" name="formData">
+        <div style="display: flex; justify-content: center">
+            <div class="bloco-informacoes">
+                <div class="container-edicao">
+                    <div class="inputs-edicao">
+                        <label for="nm" class="titulo-edicao"> Editar Nome: </label><br>
+                        <input type="text" class="editar-nome" id="nm" name="nm" value="{{ user.usuario }}"><br>
+                        <label for="em" class="titulo-edicao"> Editar E-mail: </label><br>
+                        <input type="email" class="editar-nome" id="em" name="em" value="{{ user.email }}"><br>
+                        <label for="pss" class="titulo-edicao"> Editar Senha: </label><br>
+                        <input type="password" class="editar-nome" id="pss" name="pss" value="{{ user.senha }}"><br>
+                        <label for="ra" class="titulo-edicao"> Editar RA: </label><br>
+                        <input type="text" class="editar-nome" id="ra" name="ra" value="{{ user.ra }}"><br>
+                        <label for="se" class="titulo-edicao"> Editar Semestre: </label><br>
+                        <input type="text" class="editar-nome" id="se" name="se" value="{{ user.semestre }}"><br>
+                        <label for="tm" class="titulo-edicao"> Editar Tempo: </label><br>
+                        <input type="text" class="editar-nome" id="tm" name="tm" value="{{ user.tempo }}"><br>
+                        <label for="lg" class="titulo-edicao"> Editar Linguagem: </label><br>
+                        <input type="text" class="editar-nome" id="lg" name="lg" value="{{ user.linguagem }}"><br>
+                        <label for="so" class="titulo-edicao"> Editar S.O.: </label><br>
+                        <input type="text" class="editar-nome" id="so" name="so" value="{{ user.so }}"><br>
+                        <label for="py" class="titulo-edicao"> Editar Python: </label><br>
+                        <input type="range" class="editar-nome" id="py" name="py" min="0" max="10" step="1"
+                               value="{{ user.python }}"><br>
+                        <label for="js" class="titulo-edicao"> Editar JavaScript: </label><br>
+                        <input type="range" class="editar-nome" id="js" name="js" min="0" max="10" step="1"
+                               value="{{ user.javascript }}"><br>
+                        <label for="c" class="titulo-edicao"> Editar C: </label><br>
+                        <input type="range" class="editar-nome" id="c" name="c" min="0" max="10" step="1"
+                               value="{{ user.c }}"><br>
+                        <label for="html" class="titulo-edicao"> Editar HTML/CSS: </label><br>
+                        <input type="range" class="editar-nome" id="html" name="html" min="0" max="10" step="1"
+                               value="{{ user.html }}"><br>
+                        <label for="jv" class="titulo-edicao"> Editar Java: </label><br>
+                        <input type="range" class="editar-nome" id="jv" name="jv" min="0" max="10" step="1"
+                               value="{{ user.java }}"><br>
+                        <label for="rs" class="titulo-edicao"> Editar Resumo: </label><br>
+                        <input type="text" class="editar-resumo" id="rs" name="rs" value="{{ user.resumo }}"><br>
+
+                        <div style="align-items: center; margin-left: 9%; margin-top:2%;">
+                            <button class="editar-botao" type="submit">
+                                Confirmar Alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

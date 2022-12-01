@@ -1,27 +1,30 @@
 {% extends  "base.html" %}
 {% block title %} Forms {% endblock %}
 {% block content %}
-<div class="imagem-fundo-form">
+
+
+    <div class="imagem-fundo-form">
         <div class="main-form">
-            <form class="formulario" action="#" method="post">
+            <form class="formulario" action="#" id="myForm" method="post" name="formData">
                 <img class="img-formulario" src="static/assets/images/Formulario.png">
                 <div class="fields">
                     <label for="nm">Qual o seu nome?</label><br>
-                    <input type="text" class="caixa-form" name="nm" id="nm" /><br>
+                    <input type="text" class="caixa-form" name="nm" id="nm"/><br>
                     <label for="ra">Qual o seu e-mail?</label><br>
-                    <input type="email" class="caixa-form" name="em" id="em" /><br>
+                    <input type="email" class="caixa-form" name="em" id="em"/><br>
                     <label for="ra">Qual a sua senha?</label><br>
-                    <input type="password" class="caixa-form" name="pss" id="pss" /><br>
+                    <input type="password" class="caixa-form" name="pss" id="pss"/><br>
                     <label for="ra">Qual o seu RA?</label><br>
-                    <input type="text" class="caixa-form" name="ra" id="ra" /><br>
+                    <input type="text" class="caixa-form" name="ra" id="ra"/><br>
                     <label for="se">Qual o seu semestre?</label><br>
-                    <input type="text" class="caixa-form" name="se" id="se" /><br>
+                    <input type="text" class="caixa-form" name="se" id="se"/><br>
                     <label for="tm">Há quanto tempo você programa?</label><br>
-                    <input type="text" class="caixa-form" name="tm" id="tm" /><br>
+                    <input type="text" class="caixa-form" name="tm" id="tm"/><br>
                     <label for="lg">Qual sua linguagem de programação preferida?</label><br>
-                    <input type="text" class="caixa-form" name="lg" id="lg" /><br>
-                    <label for="so">Qual seu Sistema Operacional de preferência?</label><br>
-                    <input type="text" class="caixa-form" name="so" id="so" /><br>
+                    <input type="text" class="caixa-form" name="lg" id="lg"/><br>
+                    <label for="so">Qual seu Sistema Operacional de preferência?<br> (Linux, MacOS ou
+                        Windows)</label><br>
+                    <input type="text" class="caixa-form" name="so" id="so"/><br>
                     <div class="fields-range">
                         <label for="py">De 0 a 10, o quão bom você é em Python?</label><br>
                         <input class="points" type="range" name="py" id="py" min="0" max="10" step="1"/><br>
@@ -34,13 +37,13 @@
                         <label for="jv">De 0 a 10, o quão bom você é em Java?</label><br>
                         <input class="points" type="range" name="jv" id="jv" min="0" max="10" step="1"/><br>
                     </div>
-                    <label class="texto-resumo"  for="rs">
+                    <label class="texto-resumo" for="rs">
                         Fale um pouco sobre você, qual área da programação você trabalha/pretende trabalhar e
                         qual área você acha que vai ser mais requisitada no futuro.
                     </label><br>
                     <input class="caixa-form-maior" type="text" name="rs" id="rs"/><br>
                     <div><br>
-                        <button class="botao-form" type="submit">
+                        <button class="botao-form" id="mySubmitButton" type="submit">
                             <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
                         </button>
                     </div>
@@ -48,5 +51,16 @@
             </form>
         </div>
     </div>
+    <script>
+        $(function () {
+            $("#mySubmitButton").click(function (event) {
+                event.preventDefault(); //stops the form from submitting
+                //here write the code which asks for the location and puts it in the hidden fields
+                $("#myForm").submit(); //only now do we submit the form, manually.
+            });
+        });
+
+    </script>
+
 
 {% endblock %}

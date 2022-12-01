@@ -1,21 +1,24 @@
-from flask import redirect, url_for, render_template, request, flash
-from studex import create_app, db
-from flask_login import login_user, login_required, logout_user, current_user
-from studex.Models.Usuario import Usuario
+from flask import flash
+from flask_login import login_user
+from Models.Usuario import Usuario
+from werkzeug.security import check_password_hash
 
 
-def logincheckout(user: list):
+def logincheck(user: dict):
 
-    email = user[1]
-    senha = user[2]
+    usuario = Usuario.query.filter_by(email=user['email']).first()
 
-    usuario = Usuario.query.filter_by(email=email).first()
-    print(usuario, email)
     if not usuario:
         return flash('Usuário ou senha incorretos.', category='error')
 
-    elif usuario.senha != senha:
+    elif not check_password_hash(usuario.senha, user['password']):
         return flash('Usuário ou senha incorretos.', category='error')
 
-    login_user(usuario)
+    login_user(usuario, remember=True)
     return flash('Login efetuado com sucesso', category='success')
+
+
+def salva_usuario(id):
+    usuario = Usuario.query.filter_by(id=id).first()
+
+    return usuario

@@ -1,0 +1,50 @@
+{% extends  "base.html" %}
+{% block title %} Mapa {% endblock %}
+
+{% block content %}
+    {{ n }}
+    <html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+              integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+              crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+                integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+                crossorigin=""></script>
+        <script>
+            function iniciar() {
+                var m = L.map('mapa').setView([-15.8081, -47.9317], 11);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                }).addTo(m);
+                var greenIcon = L.icon({
+                    iconUrl: '/static/assets/images/poke2.png',
+                    shadowUrl: '',
+
+                    iconSize: [50, 50], // size of the icon
+                    iconSize: [50, 50], // size of the icon
+                    shadowSize: [50, 64], // size of the shadow
+                    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+                    shadowAnchor: [4, 62],  // the same for the shadow
+                    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+                });
+                {{ marcadores | safe }}
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar();">
+    <div style="display: flex; justify-content: center">
+        <div style="display: block">
+            <div id="mapa" style="width: 1200px; height:720px; padding: 20px; border: solid blue 2px;"></div>
+            <br>
+            <a style="font-size: 40px" href="/"> Voltar para o menu  </a>
+        </div>
+    </div>
+
+    </body>
+    </html>
+
+
+{% endblock %}

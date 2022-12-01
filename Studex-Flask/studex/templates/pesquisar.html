@@ -1,0 +1,99 @@
+{% extends  "base.html" %}
+{% block title %} Pesquisar {% endblock %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function () {
+            load_data();
+            function load_data(query) {
+                $.ajax({
+                    url: "/ajaxlivesearch",
+                    method: "POST",
+                    data: {query:query},
+                    success: function (data) {
+                        $('#result').html(data);
+                        $('#result').append(data.htmlresponse);
+                    }
+                });
+            }
+
+            $('#txtBusca').keyup(function () {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
+                }
+            });
+        });
+
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <div style="display: flex; align-items: center; text-align: center; justify-content: center; margin-top: 5%;">
+        <div class="barra-pesquisar">
+            <img src="static/assets/images/pesquisapoke.png" id="btnBusca" alt="Buscar"/>
+            <input class="escrever-pesquisar" type="text" id="txtBusca" placeholder="Buscar..."/>
+            <!--<button type="submit" class="botao-pesquisar">Buscar</button>-->
+        </div>
+        <button class="botao-filtros-pesquisar" onclick="myFunction()">Filtros</button>
+
+        <form action="/filtros" method="POST">
+            <div id="myDIV">
+                <div class="quadrados-pesquisar">
+                    <div class="container-pesquisar">
+                        <h2 style="color: white;">Linguagens</h2>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="py" name="ling" value="Melhores em Python">
+                        <label class="textos-quadrado-pesquisar" for="py">Melhores em Python</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="js" name="ling" value="Melhores em JavaScript">
+                        <label class="textos-quadrado-pesquisar" for="js">Melhores em JavaScript</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="c" name="ling" value="Melhores em C++">
+                        <label class="textos-quadrado-pesquisar" for="c">Melhores em C++</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="htmlcss" name="ling" value="Melhores em htmlcss">
+                        <label class="textos-quadrado-pesquisar" for="htmlcss">Melhores em HTML/CSS</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="java" name="ling" value="Melhores em Java">
+                        <label class="textos-quadrado-pesquisar" for="java">Melhores em Java</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="none" name="ling" value="nenhum">
+                        <label class="textos-quadrado-pesquisar" for="none">Nenhum dos anteriores</label>
+                    </div>
+                    <div class="container-pesquisar">
+                        <h2 style="color: white;">Sistema Operacional</h2>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="linux" name="so" value="Usuários de Linux">
+                        <label class="textos-quadrado-pesquisar" for="linux">Usuários de Linux</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="windows" name="so" value="Usuários de Windows">
+                        <label class="textos-quadrado-pesquisar" for="windows">Usuários de Windows</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="macos" name="so" value="Usuários de MacOS">
+                        <label class="textos-quadrado-pesquisar" for="macos">Usuários de MacOs</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="none" name="so" value="nenhum">
+                        <label class="textos-quadrado-pesquisar" for="none">Nenhum dos anteriores</label>
+                    </div>
+                    <div class="container-pesquisar">
+                        <h2 style="color: white;">Tempo</h2>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="maiortempo" name="maistempo" value="Maior tempo de programação">
+                        <label class="textos-quadrado-pesquisar" for="maiortempo">Maior tempo de programação</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="semestre" name="maistempo" value="Semestre">
+                        <label class="textos-quadrado-pesquisar" for="semestre">Semestre</label><br>
+                        <input class="textos-quadrado-pesquisar" type="radio" id="none" name="maistempo" value="nenhum">
+                        <label class="textos-quadrado-pesquisar" for="none">Nenhum dos anteriores</label>
+                    </div>
+                    <button class="botao-aplicar-pesquisa" type="submit">Aplicar Filtros</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center">
+        <div class="resultado-pesquisa" id="result"></div>
+    </div>
+
+
+
+{% endblock %}
+
