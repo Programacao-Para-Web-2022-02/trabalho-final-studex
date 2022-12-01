@@ -50,18 +50,91 @@ def editar():
 
     return render_template("editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
+
 @app.route('/filtros', methods=["POST", "GET"])
 @login_required
 def filtros():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     if request.method == 'POST':
-        ra = request.form['ra-ind']
-        query = f"SELECT * FROM usuario WHERE ra = '{ra}';"
+        ling = request.form['ling']
+        so = request.form['so']
+        maistempo = request.form['maistempo']
+
+        # Python
+        if ling == "Melhores em Python" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'python' ORDER BY python DESC, tempo DESC;"
+        elif ling == "Melhores em Python" and so == "Usuários de Linux" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'python' ORDER BY python DESC, semestre DESC;"
+        if ling == "Melhores em Python" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'python' ORDER BY python DESC, tempo DESC;"
+        elif ling == "Melhores em Python" and so == "Usuários de Windows" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'python' ORDER BY python DESC, semestre DESC;"
+        if ling == "Melhores em Python" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'python' ORDER BY python DESC, tempo DESC;"
+        elif ling == "Melhores em Python" and so == "Usuários de MacOS" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'python' ORDER BY python DESC, semestre DESC;"
+
+        # JavaScript
+        if ling == "Melhores em JavaScript" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'javascript' ORDER BY javascript DESC, tempo DESC;"
+        elif ling == "Melhores em JavaScript" and so == "Usuários de Linux" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'javascript' ORDER BY javascript DESC, semestre DESC;"
+        if ling == "Melhores em JavaScript" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'javascript' ORDER BY javascript DESC, tempo DESC;"
+        elif ling == "Melhores em JavaScript" and so == "Usuários de Windows" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'javascript' ORDER BY javascript DESC, semestre DESC;"
+        if ling == "Melhores em JavaScript" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'javascript' ORDER BY javascript DESC, tempo DESC;"
+        elif ling == "Melhores em JavaScript" and so == "Usuários de MacOS" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'javascript' ORDER BY javascript DESC, semestre DESC;"
+
+        # C++
+        if ling == "Melhores em C++" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'c' ORDER BY c DESC, tempo DESC;"
+        elif ling == "Melhores em C++" and so == "Usuários de Linux" and maistempo == "Semestre":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'c' ORDER BY c DESC, semestre DESC;"
+        if ling == "Melhores em C++" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'c' ORDER BY c DESC, tempo DESC;"
+        elif ling == "Melhores em C++" and so == "Usuários de Windows" and maistempo == "Semestre":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'c' ORDER BY c DESC, semestre DESC;"
+        if ling == "Melhores em C++" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'c' ORDER BY c DESC, tempo DESC;"
+        elif ling == "Melhores em C++" and so == "Usuários de MacOS" and maistempo == "Semestre":
+            query = f"SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'c' ORDER BY c DESC, semestre DESC;"
+
+        # HTMLCSS
+        if ling == "Melhores em htmlcss" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'html' ORDER BY htmlcss DESC, tempo DESC;"
+        elif ling == "Melhores em htmlcss" and so == "Usuários de Linux" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'html' ORDER BY htmlcss DESC, semestre DESC;"
+        if ling == "Melhores em htmlcss" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'html' ORDER BY htmlcss DESC, tempo DESC;"
+        elif ling == "Melhores em htmlcss" and so == "Usuários de Windows" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'html' ORDER BY htmlcss DESC, semestre DESC;"
+        if ling == "Melhores em htmlcss" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'html' ORDER BY html DESC, tempo DESC;"
+        elif ling == "Melhores em htmlcss" and so == "Usuários de MacOS" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'html' ORDER BY html DESC, semestre DESC;"
+
+        # Java
+        if ling == "Melhores em Java" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'java' ORDER BY java DESC, tempo DESC;"
+        elif ling == "Melhores em Java" and so == "Usuários de Linux" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'lin%' and linguagem = 'java' ORDER BY java DESC, semestre DESC;"
+        if ling == "Melhores em Java" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'java' ORDER BY java DESC, tempo DESC;"
+        elif ling == "Melhores em Java" and so == "Usuários de Windows" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'win%' and linguagem = 'java' ORDER BY java DESC, semestre DESC;"
+        if ling == "Melhores em Java" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'java' ORDER BY java DESC, tempo DESC;"
+        elif ling == "Melhores em Java" and so == "Usuários de MacOS" and maistempo == "Semestre":
+            query = "SELECT * FROM usuario WHERE so LIKE 'mac%' and linguagem = 'java' ORDER BY java DESC, semestre DESC;"
+
         cur.execute(query)
         usuario = cur.fetchall()
 
-    return render_template("perfil-singular.html", user=current_user, usuario=usuario,
-                           n=randint(1, 10), row=row)
+        return render_template("filtros.html", user=current_user, usuario=usuario, n=randint(1, 10), row=row,
+                               ling=ling, so=so, maistempo=maistempo)
 
 
 @app.route('/perfil-singular', methods=["POST", "GET"])
