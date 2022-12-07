@@ -5,7 +5,6 @@ from flask_login import login_required, logout_user, current_user
 from Services.LoginServices import logincheck, salva_usuario
 from DAO.FormDAO import form_add_user, db
 from flask_googlemaps import GoogleMaps
-from flask_googlemaps import Map
 from random import randint
 from flask_mysqldb import MySQL, MySQLdb
 from util import bd
@@ -253,15 +252,16 @@ def ajaxlivesearch():
 
 @app.route("/mapa")
 def mapview():
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    query = 'SELECT idt_ponto, lat_ponto, lng_ponto FROM tb_ponto'
-    cur.execute(query)
-    pontos = cur.fetchall()
+    sql = bd.SQL('root', '123456', 'Studex')
+    cmd = 'SELECT id, latitude, longitude FROM usuario;'
+    cs = sql.consultar(cmd, [])
     marcadores = ''
     icone = "{icon:greenIcon}"
-    marcadores += 'var mk_{} = L.marker([{}, {}], {}).addTo(m);\n'.format(1, -15.767531, -47.894720, icone)
-
-    return render_template('mapa.html', marcadores=marcadores, user=current_user, pontos=pontos)
+    for idt, lat, lng in cs:
+        marcadores += 'var mk_{} = L.marker([{}, {}], {}).addTo(m);\n'.format(idt, lat, lng, icone)
+        print(marcadores)
+    cs.close()
+    return render_template('mapa.html', marcadores=marcadores, user=current_user, usuario=usuario, n=randint(1, 10))
 
 
 
@@ -269,7 +269,6 @@ def mapview():
 def login():
     if request.method == 'POST':
         logincheck(request.values.to_dict())
-
     return render_template("login.html", user=current_user)
 
 
@@ -285,7 +284,6 @@ def forms():
     if request.method == 'POST':
         print(request.values.to_dict())
         form_add_user(request.values.to_dict())
-
     return render_template("forms.html", user=current_user)
 
 

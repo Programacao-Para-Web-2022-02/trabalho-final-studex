@@ -41,9 +41,15 @@
                         Fale um pouco sobre você, qual área da programação você trabalha/pretende trabalhar e
                         qual área você acha que vai ser mais requisitada no futuro.
                     </label><br>
+
+                    <button type="button" onclick="getLocation()"> Localização</button>
+                    <input name="local" id="local" type="hidden">
+                    <input name="latitude" id="latitude" type="hidden">
+                    <input name="longitude" id="longitude" type="hidden">
+
                     <input class="caixa-form-maior" type="text" name="rs" id="rs"/><br>
                     <div><br>
-                        <button class="botao-form" id="mySubmitButton" type="submit">
+                        <button class="botao-form" onclick="getLocation()" type="submit">
                             <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
                         </button>
                     </div>
@@ -52,14 +58,19 @@
         </div>
     </div>
     <script>
-        $(function () {
-            $("#mySubmitButton").click(function (event) {
-                event.preventDefault(); //stops the form from submitting
-                //here write the code which asks for the location and puts it in the hidden fields
-                $("#myForm").submit(); //only now do we submit the form, manually.
-            });
-        });
-
+        var x = document.getElementById("local");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Não suporta geolocalização";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+            latitude.value = position.coords.latitude
+            longitude.value = position.coords.longitude
+        }
     </script>
 
 
