@@ -12,7 +12,6 @@ def form_add_user(form: list):
 
     if user:
         return flash('Usuário já cadastrado.', category='error')
-
     new_user = Usuario(
         usuario=form['nm'],
         email=form['em'],
@@ -27,7 +26,10 @@ def form_add_user(form: list):
         c=form['c'],
         html=form['html'],
         java=form['jv'],
+        latitude=form['latitude'],
+        longitude=form['longitude'],
         resumo=form['rs'])
+
 
     db.session.add(new_user)
     db.session.commit()

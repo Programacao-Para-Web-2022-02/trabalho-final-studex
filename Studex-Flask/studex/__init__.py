@@ -7,9 +7,6 @@ from os import path
 from flask_login import LoginManager
 from flask_googlemaps import GoogleMaps
 
-
-
-
 db = SQLAlchemy()
 DB_NAME = 'Studex'
 senha_db = '123456'

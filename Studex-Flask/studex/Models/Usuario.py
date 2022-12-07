@@ -17,4 +17,6 @@ class Usuario(db.Model, UserMixin):
     c = db.Column(db.String(80), nullable=False)
     html = db.Column(db.String(80), nullable=False)
     java = db.Column(db.String(80), nullable=False)
+    latitude = db.Column(db.String(300), nullable=False)
+    longitude = db.Column(db.String(300), nullable=False)
     resumo = db.Column(db.String(500), nullable=False)
