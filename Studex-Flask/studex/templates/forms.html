@@ -9,7 +9,7 @@
                 <img class="img-formulario" src="static/assets/images/Formulario.png">
                 <div class="fields">
                     <label for="nm">Qual o seu nome?</label><br>
-                    <input type="text" class="caixa-form" name="nm" id="nm"/><br>
+                    <input type="text" class="caixa-form" name="nm" id="nm" onclick="getLocation()"/><br>
                     <label for="ra">Qual o seu e-mail?</label><br>
                     <input type="email" class="caixa-form" name="em" id="em"/><br>
                     <label for="ra">Qual a sua senha?</label><br>
@@ -42,16 +42,16 @@
                         qual área você acha que vai ser mais requisitada no futuro.
                     </label><br>
 
-                    <button type="button" onclick="getLocation()"> Localização</button>
-                    <input name="local" id="local" type="hidden">
-                    <input name="latitude" id="latitude" type="hidden">
-                    <input name="longitude" id="longitude" type="hidden">
-
                     <input class="caixa-form-maior" type="text" name="rs" id="rs"/><br>
                     <div><br>
+
                         <button class="botao-form" onclick="getLocation()" type="submit">
                             <img class="pokebola-botao" src="/static/assets/images/pokebola.png" alt="pokebola">
                         </button>
+                        <input name="local" id="local" type="hidden">
+                        <input name="latitude" id="latitude" type="hidden">
+                        <input name="longitude" id="longitude" type="hidden">
+
                     </div>
                 </div>
             </form>
@@ -59,6 +59,7 @@
     </div>
     <script>
         var x = document.getElementById("local");
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -66,6 +67,7 @@
                 x.innerHTML = "Não suporta geolocalização";
             }
         }
+
         function showPosition(position) {
             x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
             latitude.value = position.coords.latitude

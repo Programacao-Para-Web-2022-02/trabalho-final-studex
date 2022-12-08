@@ -6,7 +6,6 @@ from werkzeug.security import generate_password_hash
 
 
 def form_add_user(form: list):
-
     email = form['em']
     user = Usuario.query.filter_by(email=email).first()
 
@@ -30,8 +29,6 @@ def form_add_user(form: list):
         longitude=form['longitude'],
         resumo=form['rs'])
 
-
     db.session.add(new_user)
     db.session.commit()
     return flash('Usuário cadastrado com sucesso!', category='success')
-

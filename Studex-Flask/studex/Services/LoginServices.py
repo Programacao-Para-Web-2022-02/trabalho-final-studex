@@ -5,7 +5,6 @@ from werkzeug.security import check_password_hash
 
 
 def logincheck(user: dict):
-
     usuario = Usuario.query.filter_by(email=user['email']).first()
 
     if not usuario:

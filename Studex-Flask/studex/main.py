@@ -232,10 +232,12 @@ def perfil():
     return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
                            n=randint(1, 10))
 
+
 @app.route('/pesquisar')
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
+
 
 @app.route("/ajaxlivesearch", methods=["POST", "GET"])
 def ajaxlivesearch():
@@ -263,14 +265,14 @@ def mapview():
     marcadores = ''
     icone = "{icon:greenIcon}"
 
-
     for idt, lat, lng, ra in cs:
-        marcadores += "var mk_" + str(idt) +" = L.marker(["+str(lat)+", "+str(lng)+"], "+icone+").addTo(m).on('click', function(e){window.open('/perfil-singular?ra-ind="+str(ra)+"');});\n"
+        marcadores += "var mk_" + str(idt) + " = L.marker([" + str(lat) + ", " + str(
+            lng) + "], " + icone + ").addTo(m).on('click', function(e){window.open('/perfil-singular?ra-ind=" + str(
+            ra) + "');});\n"
         print(marcadores)
     cs.close()
     return render_template('mapa.html', marcadores=marcadores, user=current_user,
                            usuario=usuario, n=randint(1, 10), row=row)
-
 
 
 @app.route("/login", methods=["POST", "GET"])
