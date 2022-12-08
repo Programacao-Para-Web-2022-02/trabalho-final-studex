@@ -55,155 +55,18 @@ def filtros():
     ling = request.form['ling']
     so = request.form['so']
     maistempo = request.form['maistempo']
-    frase_select = "SELECT * FROM usuario"
-    frase_lin = "SELECT * FROM usuario WHERE so LIKE 'lin%'"
-    frase_win = "SELECT * FROM usuario WHERE so LIKE 'win%'"
-    frase_mac = "SELECT * FROM usuario WHERE so LIKE 'mac%'"
 
-    if ling == "nenhum":
-        pass
-    if so == "nenhum":
-        pass
-    if maistempo == "nenhum":
-        pass
-    if ling == "nenhum" and so == "nenhum" and maistempo == "nenhum":
-        return f'<h1>Nenhum Filtro Selecionado!</h1>'
+    if ling == " ":
+        ling = "id"
+    if maistempo == " ":
+        maistempo = "id"
+    if so == " ":
+        query = f"SELECT * FROM usuario ORDER BY {ling} and {maistempo} DESC;"
+    else:
+        query = f"SELECT * FROM usuario WHERE SO LIKE '{so}%' ORDER BY {ling} and {maistempo} DESC;"
 
-    if ling == "nenhum" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin};"
-    if ling == "nenhum" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} ORDER BY semestre DESC;"
-    if ling == "nenhum" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} ORDER BY tempo DESC;"
-
-    if ling == "nenhum" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac}"
-    if ling == "nenhum" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} ORDER BY semestre DESC;"
-    if ling == "nenhum" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac} ORDER BY tempo DESC;"
-
-    if ling == "nenhum" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win}"
-    if ling == "nenhum" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} ORDER BY semestre DESC;"
-    if ling == "nenhum" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} ORDER BY tempo DESC;"
-
-    if ling == "nenhum" and so == "nenhum" and maistempo == "Semestre":
-        query = f"{frase_select} ORDER BY semestre DESC;"
-    if ling == "nenhum" and so == "nenhum" and maistempo == "Maior tempo de programação":
-        query = f"{frase_select} ORDER BY tempo DESC;"
-
-    # Python
-    if ling == "Melhores em Python":
-        query = f"{frase_select} ORDER BY python DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin} and linguagem = 'python' ORDER BY python DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win}' and linguagem = 'python' ORDER BY python DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac} and linguagem = 'python' ORDER BY python DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} and linguagem = 'python' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Python" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} and linguagem = 'python' ORDER BY semestre DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} and linguagem = 'python' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Python" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} and linguagem = 'python' ORDER BY python semestre DESC;"
-    if ling == "Melhores em Python" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac}'mac%' and linguagem = 'python' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Python" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} and linguagem = 'python' ORDER BY semestre DESC;"
-    # JavaScript
-    if ling == "Melhores em JavaScript":
-        query = f"{frase_select} ORDER BY javascript DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin} and linguagem = 'javascript' ORDER BY javascript DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win} and linguagem = 'javascript' ORDER BY javascript DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac} and linguagem = 'javascript' ORDER BY javascript DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} and linguagem = 'javascript' ORDER BY tempo DESC;"
-    elif ling == "Melhores em JavaScript" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} and linguagem = 'javascript' ORDER BY semestre DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} and linguagem = 'javascript' ORDER BY tempo DESC;"
-    elif ling == "Melhores em JavaScript" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} and linguagem = 'javascript' ORDER BY semestre DESC;"
-    if ling == "Melhores em JavaScript" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac} and linguagem = 'javascript' ORDER BY tempo DESC;"
-    elif ling == "Melhores em JavaScript" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} and linguagem = 'javascript' ORDER BY semestre DESC;"
-    # C++
-    if ling == "Melhores em C++":
-        query = f"{frase_select} ORDER BY c DESC;"
-    if ling == "Melhores em C++" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin} and linguagem LIKE 'c%' ORDER BY c DESC;"
-    if ling == "Melhores em C++" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win} and linguagem LIKE 'c%' ORDER BY c DESC;"
-    if ling == "Melhores em C++" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac} and linguagem LIKE 'c%' ORDER BY c DESC;"
-
-    if ling == "Melhores em C++" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} and linguagem LIKE 'c%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em C++" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} and linguagem LIKE 'c%' ORDER BY semestre DESC;"
-    if ling == "Melhores em C++" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} and linguagem LIKE 'c%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em C++" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} and linguagem LIKE 'c%' ORDER BY semestre DESC;"
-    if ling == "Melhores em C++" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac} and linguagem LIKE 'c%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em C++" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} and linguagem LIKE 'c%' ORDER BY semestre DESC;"
-    # HTMLCSS
-    if ling == "Melhores em htmlcss":
-        query = f"{frase_select} ORDER BY html DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin} and linguagem LIKE 'htm%' ORDER BY html DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win} and linguagem LIKE 'htm%' ORDER BY html DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac} and linguagem LIKE 'htm%' ORDER BY html DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} and linguagem LIKE 'htm%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em htmlcss" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} and linguagem LIKE 'htm%' ORDER BY semestre DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} and linguagem = LIKE 'htm%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em htmlcss" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} and linguagem LIKE 'htm%' ORDER BY semestre DESC;"
-    if ling == "Melhores em htmlcss" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac} and linguagem LIKE 'htm%' ORDER BY tempo DESC;"
-    elif ling == "Melhores em htmlcss" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} and linguagem LIKE 'htm%' ORDER BY semestre DESC;"
-    # Java
-    if ling == "Melhores em Java":
-        query = f"{frase_select} ORDER BY java DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de Linux" and maistempo == "nenhum":
-        query = f"{frase_lin} and linguagem = 'java' ORDER BY java DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de Windows" and maistempo == "nenhum":
-        query = f"{frase_win} and linguagem = 'java' ORDER BY java DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de MacOS" and maistempo == "nenhum":
-        query = f"{frase_mac} and linguagem = 'java' ORDER BY java DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de Linux" and maistempo == "Maior tempo de programação":
-        query = f"{frase_lin} and linguagem = 'java' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Java" and so == "Usuários de Linux" and maistempo == "Semestre":
-        query = f"{frase_lin} and linguagem = 'java' ORDER BY semestre DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de Windows" and maistempo == "Maior tempo de programação":
-        query = f"{frase_win} and linguagem = 'java' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Java" and so == "Usuários de Windows" and maistempo == "Semestre":
-        query = f"{frase_win} and linguagem = 'java' ORDER BY semestre DESC;"
-    if ling == "Melhores em Java" and so == "Usuários de MacOS" and maistempo == "Maior tempo de programação":
-        query = f"{frase_mac} and linguagem = 'java' ORDER BY tempo DESC;"
-    elif ling == "Melhores em Java" and so == "Usuários de MacOS" and maistempo == "Semestre":
-        query = f"{frase_mac} and linguagem = 'java' ORDER BY semestre DESC;"
     cur.execute(query)
     usuario = cur.fetchall()
-
     return render_template("filtros.html", user=current_user, usuario=usuario, n=randint(1, 10),
                            row=row, ling=ling, so=so, maistempo=maistempo)
 
