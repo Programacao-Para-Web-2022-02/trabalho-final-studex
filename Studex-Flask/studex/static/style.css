@@ -217,7 +217,22 @@ body {
 .pokebola-botao {
     height: auto;
     width: 100px;
+    transition: all .2s ease-in-out;
 }
+
+.pokebola-botao:hover {
+    transform: scale(1.2);
+}
+
+.icone-mapa {
+    transition: all .2s ease-in-out;
+
+}
+
+.icone-mapa:hover {
+    transform: scale(1.2);
+}
+
 
 /* Fim Style Forms */
 
@@ -694,6 +709,18 @@ ul li ul li {
     height: 100px;
     font-size: 20px;
     text-align: center;
+}
+
+.alerta-erro {
+    background-color: red;
+    width: 80px;
+    font-size: 20px;
+}
+
+.alerta-acerto {
+    background-color: green;
+    width: 80px;
+    font-size: 20px;
 }
 
 .editar-prof {

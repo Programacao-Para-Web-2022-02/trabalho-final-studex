@@ -26,7 +26,6 @@ def create_app():
     app.config['MYSQL_DB'] = 'Studex'
     app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-
     # Bootstrap(app)
     db.init_app(app)
 
@@ -51,4 +50,3 @@ def create_app():
         return Usuario.query.get(int(id_user))
 
     return app
-

@@ -3,6 +3,7 @@
 
 {% block content %}
     {{ n }}
+
     <html>
     <head>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -12,6 +13,10 @@
                 integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
                 crossorigin=""></script>
         <script>
+            function perfil_singular(e, ra) {
+                window.open("/perfil-singular?ra-ind=" + ra);
+            }
+
             function iniciar() {
                 var m = L.map('mapa').setView([-15.8081, -47.9317], 11);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,9 +31,10 @@
                     shadowSize: [50, 64],
                     iconAnchor: [22, 94],
                     shadowAnchor: [4, 62],
-                    popupAnchor: [-3, -76]
+                    popupAnchor: [-3, -76],
                 });
                 {{ marcadores | safe }}
+
             }
         </script>
     </head>
@@ -38,10 +44,9 @@
         <div style="display: block">
             <div id="mapa" style="width: 1200px; height:720px; padding: 20px; border: solid blue 2px;"></div>
             <br>
-            <a style="font-size: 40px" href="/"> Voltar para o menu  </a>
+            <a style="font-size: 40px" href="/"> Voltar para o menu </a>
         </div>
     </div>
-
     </body>
     </html>
 

@@ -217,6 +217,11 @@ def perfil_singular():
         query = f"SELECT * FROM usuario WHERE ra = '{ra}';"
         cur.execute(query)
         usuario = cur.fetchall()
+    else:
+        ra = request.args.get("ra-ind")
+        query = f"SELECT * FROM usuario WHERE ra = '{ra}';"
+        cur.execute(query)
+        usuario = cur.fetchall()
 
     return render_template("perfil-singular.html", user=current_user, usuario=usuario, n=randint(1, 10), row=row)
 
@@ -227,10 +232,12 @@ def perfil():
     return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
                            n=randint(1, 10))
 
+
 @app.route('/pesquisar')
 @login_required
 def pesquisar():
     return render_template("pesquisar.html", user=current_user)
+
 
 @app.route("/ajaxlivesearch", methods=["POST", "GET"])
 def ajaxlivesearch():
@@ -253,16 +260,19 @@ def ajaxlivesearch():
 @app.route("/mapa")
 def mapview():
     sql = bd.SQL('root', '123456', 'Studex')
-    cmd = 'SELECT id, latitude, longitude FROM usuario;'
+    cmd = 'SELECT id, latitude, longitude, ra FROM usuario;'
     cs = sql.consultar(cmd, [])
     marcadores = ''
     icone = "{icon:greenIcon}"
-    for idt, lat, lng in cs:
-        marcadores += 'var mk_{} = L.marker([{}, {}], {}).addTo(m);\n'.format(idt, lat, lng, icone)
+
+    for idt, lat, lng, ra in cs:
+        marcadores += "var mk_" + str(idt) + " = L.marker([" + str(lat) + ", " + str(
+            lng) + "], " + icone + ").addTo(m).on('click', function(e){window.open('/perfil-singular?ra-ind=" + str(
+            ra) + "');});\n"
         print(marcadores)
     cs.close()
-    return render_template('mapa.html', marcadores=marcadores, user=current_user, usuario=usuario, n=randint(1, 10))
-
+    return render_template('mapa.html', marcadores=marcadores, user=current_user,
+                           usuario=usuario, n=randint(1, 10), row=row)
 
 
 @app.route("/login", methods=["POST", "GET"])
