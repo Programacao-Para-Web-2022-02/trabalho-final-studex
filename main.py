@@ -17,7 +17,7 @@ row = 0
 
 @app.route('/')
 def home():
-    return render_template("templates/home.html", user=current_user)
+    return render_template("home.html", user=current_user)
 
 
 @app.route('/editar', methods=["POST", "GET"])
@@ -43,7 +43,7 @@ def editar():
         current_user.resumo = request.form['rs']
         db.session.commit()
 
-    return render_template("templates/editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
+    return render_template("editar.html", user=current_user, usuario=salva_usuario(current_user.get_id()))
 
 
 @app.route('/filtros', methods=["POST", "GET"])
@@ -53,6 +53,7 @@ def filtros():
     ling = request.form['ling']
     so = request.form['so']
     maistempo = request.form['maistempo']
+
     if ling == " ":
         ling = "id"
     if maistempo == " ":
@@ -61,9 +62,10 @@ def filtros():
         query = f"SELECT * FROM usuario ORDER BY {ling} and {maistempo} DESC;"
     else:
         query = f"SELECT * FROM usuario WHERE SO LIKE '{so}%' ORDER BY {ling} and {maistempo} DESC;"
+
     cur.execute(query)
     usuario = cur.fetchall()
-    return render_template("templates/filtros.html", user=current_user, usuario=usuario, n=randint(1, 10),
+    return render_template("filtros.html", user=current_user, usuario=usuario, n=randint(1, 10),
                            row=row, ling=ling, so=so, maistempo=maistempo)
 
 
@@ -82,20 +84,20 @@ def perfil_singular():
         cur.execute(query)
         usuario = cur.fetchall()
 
-    return render_template("templates/perfil-singular.html", user=current_user, usuario=usuario, n=randint(1, 10), row=row)
+    return render_template("perfil-singular.html", user=current_user, usuario=usuario, n=randint(1, 10), row=row)
 
 
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template("templates/perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
+    return render_template("perfil.html", user=current_user, usuario=salva_usuario(current_user.get_id()),
                            n=randint(1, 10))
 
 
 @app.route('/pesquisar')
 @login_required
 def pesquisar():
-    return render_template("templates/pesquisar.html", user=current_user)
+    return render_template("pesquisar.html", user=current_user)
 
 
 @app.route("/ajaxlivesearch", methods=["POST", "GET"])
@@ -113,7 +115,7 @@ def ajaxlivesearch():
             cur.execute(query)
             usuario = cur.fetchall()
 
-    return jsonify({'htmlresponse': render_template('templates/response.html', usuario=usuario, row=row)})
+    return jsonify({'htmlresponse': render_template('response.html', usuario=usuario, row=row)})
 
 
 @app.route("/mapa")
@@ -130,7 +132,7 @@ def mapview():
             ra) + "');});\n"
         print(marcadores)
     cs.close()
-    return render_template('templates/mapa.html', marcadores=marcadores, user=current_user,
+    return render_template('mapa.html', marcadores=marcadores, user=current_user,
                            usuario=usuario, n=randint(1, 10), row=row)
 
 
@@ -138,7 +140,7 @@ def mapview():
 def login():
     if request.method == 'POST':
         logincheck(request.values.to_dict())
-    return render_template("templates/login.html", user=current_user)
+    return render_template("login.html", user=current_user)
 
 
 @app.route("/logout")
@@ -153,7 +155,7 @@ def forms():
     if request.method == 'POST':
         print(request.values.to_dict())
         form_add_user(request.values.to_dict())
-    return render_template("templates/forms.html", user=current_user)
+    return render_template("forms.html", user=current_user)
 
 
 if __name__ == '__main__':

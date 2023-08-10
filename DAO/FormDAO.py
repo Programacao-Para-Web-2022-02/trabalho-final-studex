@@ -1,4 +1,5 @@
 from flask import redirect, url_for, render_template, request, flash
+# from studex.forms import Form, LoginForm
 from __init__ import create_app, db
 from Models.Usuario import Usuario
 from werkzeug.security import generate_password_hash
