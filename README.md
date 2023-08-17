@@ -2,7 +2,7 @@
 <h4>
   Studex é um site que imita a ideia e estilização de uma "Pokedex", fazendo referência ao desenho Pokémon. Contudo, a proposta é registrar as características e qualidades dos estudantes de Ciência da Computação do Centro Universitário de Brasília - CEUB. Assim, com algumas perguntas relacionadas às principais linguagens de programação e sobre atuação no mercado de computação, é possível conhecer melhor o perfil e capacidades dos alunos, de uma forma descontraída e divertida.
 </h4>
-O site está no ar <a href="https://klas.zoser.com.br/" target="_blank">nesse link</a>, caso queira conferir!
+O site está no ar <a href="https://studex.zoser.com.br/" target="_blank">nesse link</a>, caso queira conferir!
 Caso queira rodar na sua máquina, basta ajustar os parametros de conexão com a seu banco de dados e criar um DATABASE 'Studex'. 
 Após isso, instale as dependências necessárias:<br><br>
 
